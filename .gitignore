@@ -134,6 +134,34 @@ dist
 !.yarn/sdks
 !.yarn/versions
 
+# Node / NPM (если будешь использовать)
+node_modules/
+package-lock.json
+npm-debug.log
+
+# Mac OS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# IDE / Editor
+.vscode/
+*.code-workspace
+.idea/
+
+# Logs
+*.log
+
+# Build / distribution folders (если будут)
+dist/
+build/
+
+# Python / virtual env (если используешь Python для API)
+__pycache__/
+*.pyc
+venv/
+
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
