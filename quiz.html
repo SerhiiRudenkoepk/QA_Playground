@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>QA Quiz</title>
+        <link rel="stylesheet" href="css/quiz_style.css">
+    </head>
+    <body>
+  <header class="navbar">
+    <div class="logo">QA Playground</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="quiz.html">QA Quiz</a></li>
+        <li><a href="about.html">About/Contacts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="quiz-main">
+    <div id="quiz-container">
+
+      <!-- progress -->
+      <div id="progress-wrapper">
+        <div id="progress-bar"></div>
+      </div>
+
+      <!-- question number -->
+      <p id="question-number"></p>
+
+      <!-- timer -->
+      <p id="timer">20</p>
+
+      <!-- question -->
+      <h2 id="question">Question here</h2>
+
+      <!-- answers -->
+      <div id="answers"></div>
+
+      <!-- feedback -->
+      <p id="feedback"></p>
+
+      
+      <div class="difficulty-selection">
+        <h3>Select Level & Type:</h3>
+        <button class="button-30" role="button" onclick="startQuiz('junior', 'software')">Junior QA Software</button>
+        <button class="button-30" role="button" onclick="startQuiz('middle', 'software')">Middle QA Software</button>
+        <button class="button-30" role="button" onclick="startQuiz('junior', 'gamedev')">Junior QA Gamedev</button>
+        <button class="button-30" role="button" onclick="startQuiz('middle', 'gamedev')">Middle QA Gamedev</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="js/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,947 @@
+[
+  {
+    "id": 1,
+    "question": "What does QA (Quality Assurance) primarily focus on?",
+    "answers": [
+      {
+        "text": "Preventing defects by improving processes and standards",
+        "result_answer": true,
+        "explanation": "Correct. QA is process-focused: it aims to prevent defects from being introduced."
+      },
+      {
+        "text": "Finding defects only after the product is released",
+        "result_answer": false,
+        "explanation": "Not quite. That describes a more reactive approach; QA is about prevention and process quality."
+      },
+      {
+        "text": "Verifying UI layout and colors as the main goal",
+        "result_answer": false,
+        "explanation": "UI checks are important, but QA is broader than look-and-feel; it covers the whole delivery process."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "QA vs QC: which statement best matches the difference?",
+    "answers": [
+      {
+        "text": "QA improves processes; QC focuses on checking results/executing tests",
+        "result_answer": true,
+        "explanation": "Correct. QA is prevention/process improvement, while QC is verification through testing."
+      },
+      {
+        "text": "QC is always automated; QA is always manual testing",
+        "result_answer": false,
+        "explanation": "This is a common misconception. Both QA and QC can involve manual and automated activities."
+      },
+      {
+        "text": "QA and QC are identical and can be used interchangeably",
+        "result_answer": false,
+        "explanation": "They overlap, but the emphasis differs: QA is process-oriented, QC is result-oriented."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "What is a test case?",
+    "answers": [
+      {
+        "text": "A set of steps, input data, and expected results to verify a requirement",
+        "result_answer": true,
+        "explanation": "Correct. A test case tells you what to do, with what data, and what result proves the behavior."
+      },
+      {
+        "text": "A high-level plan describing test scope only",
+        "result_answer": false,
+        "explanation": "That's closer to a test plan/strategy. A test case is more detailed and execution-ready."
+      },
+      {
+        "text": "A bug report written after a defect is found",
+        "result_answer": false,
+        "explanation": "Bug reports describe an observed issue. Test cases are created to validate behavior before finding defects."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Test scenario is best described as:",
+    "answers": [
+      {
+        "text": "A broader description of functionality to be tested, often covered by multiple test cases",
+        "result_answer": true,
+        "explanation": "Correct. A scenario represents a user/system goal; test cases are the concrete checks within it."
+      },
+      {
+        "text": "A single executable step with no expected result",
+        "result_answer": false,
+        "explanation": "A scenario is not just one step. It usually maps to multiple test cases and includes expected behavior."
+      },
+      {
+        "text": "A list of tools used for testing",
+        "result_answer": false,
+        "explanation": "Tooling belongs to the test environment/strategy. Scenarios belong to requirements and behavior."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What is the key difference between a test plan and a test strategy?",
+    "answers": [
+      {
+        "text": "Strategy is high-level guidance; plan is the concrete execution approach (what, when, who, scope)",
+        "result_answer": true,
+        "explanation": "Correct. Strategy sets direction; plan translates it into actionable details for execution."
+      },
+      {
+        "text": "A test plan is only for automation; a test strategy is only for manual testing",
+        "result_answer": false,
+        "explanation": "Not accurate. Both documents can cover manual and automated testing."
+      },
+      {
+        "text": "Strategy is written after testing is finished; plan is written during testing",
+        "result_answer": false,
+        "explanation": "Usually the opposite: strategy/plan are created before execution based on requirements and risks."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "SDLC vs STLC: which statement is correct?",
+    "answers": [
+      {
+        "text": "SDLC describes the whole software development process; STLC describes testing activities across that lifecycle",
+        "result_answer": true,
+        "explanation": "Correct. STLC is testing-specific and is performed throughout the SDLC phases."
+      },
+      {
+        "text": "STLC is only performed after deployment; SDLC ends before testing begins",
+        "result_answer": false,
+        "explanation": "Testing is often continuous. STLC typically starts early (requirements/design) and continues after release too."
+      },
+      {
+        "text": "STLC covers coding styles; SDLC covers test execution tools",
+        "result_answer": false,
+        "explanation": "These are unrelated. SDLC is about development; STLC is about planning, designing, and executing tests."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Which option best describes smoke testing?",
+    "answers": [
+      {
+        "text": "A quick check that the most critical functions work after a build is deployed",
+        "result_answer": true,
+        "explanation": "Correct. Smoke testing verifies basic stability; if it fails, you usually stop further testing."
+      },
+      {
+        "text": "Deep testing of a single feature including complex edge cases",
+        "result_answer": false,
+        "explanation": "That's more like sanity testing or targeted testing; smoke is meant to be quick and broad."
+      },
+      {
+        "text": "Long-running performance tests at load levels",
+        "result_answer": false,
+        "explanation": "Performance testing is different. Smoke testing is not primarily about performance metrics."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Sanity testing is closest to:",
+    "answers": [
+      {
+        "text": "Targeted verification of specific changes/bug fixes before broader regression",
+        "result_answer": true,
+        "explanation": "Correct. Sanity is focused: it checks whether fixes/new functionality behave as expected."
+      },
+      {
+        "text": "Testing the entire application end-to-end after every change",
+        "result_answer": false,
+        "explanation": "That describes full regression/system testing, not sanity testing."
+      },
+      {
+        "text": "Checking only UI alignment and typography",
+        "result_answer": false,
+        "explanation": "That's too narrow. Sanity testing focuses on functional impact of changes."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Regression testing is performed to ensure that:",
+    "answers": [
+      {
+        "text": "Changes did not break existing functionality and previously working behaviors remain intact after updates",
+        "result_answer": true,
+        "explanation": "Correct. Regression verifies previously working areas still work after code/config changes."
+      },
+      {
+        "text": "New features work correctly even if old features are not retested",
+        "result_answer": false,
+        "explanation": "That might be new feature testing, not regression. Regression includes protecting old behavior."
+      },
+      {
+        "text": "The build compiles successfully",
+        "result_answer": false,
+        "explanation": "Compilation success is necessary but not sufficient; regression is about behavior not just building."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Retesting is best described as:",
+    "answers": [
+      {
+        "text": "Re-running a test case that previously failed after the defect fix",
+        "result_answer": true,
+        "explanation": "Correct. Retesting focuses on verifying the fix for a known failing case."
+      },
+      {
+        "text": "Testing everything again from scratch to ensure full coverage",
+        "result_answer": false,
+        "explanation": "That's closer to full regression. Retesting is usually narrower and fix-driven."
+      },
+      {
+        "text": "Verifying only the updated UI screens without checking APIs",
+        "result_answer": false,
+        "explanation": "Retesting should validate the behavior affected by the fix, not only UI."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Functional vs non-functional testing: which is correct?",
+    "answers": [
+      {
+        "text": "Functional tests verify features; non-functional tests verify qualities like performance, security, usability",
+        "result_answer": true,
+        "explanation": "Correct. Functionality is 'what the system does'; non-functional is 'how well it behaves.'"
+      },
+      {
+        "text": "Non-functional tests check only UI layout; functional tests check only database structure",
+        "result_answer": false,
+        "explanation": "Both categories cover more than just UI or DB. Functional is behavior per requirements."
+      },
+      {
+        "text": "Functional tests are always manual; non-functional tests are always automated",
+        "result_answer": false,
+        "explanation": "Not a rule. Both can be manual or automated depending on the need."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "Positive and negative testing means:",
+    "answers": [
+      {
+        "text": "Positive: valid inputs/expected success paths; Negative: invalid inputs/expected failure or error handling",
+        "result_answer": true,
+        "explanation": "Correct. You validate both 'happy paths' and how the system handles 'unhappy' cases."
+      },
+      {
+        "text": "Positive: only testing UI visuals; Negative: only testing API response time",
+        "result_answer": false,
+        "explanation": "That mixes different test types. Positive/negative is about input validity and expected outcomes."
+      },
+      {
+        "text": "Positive: testing only after a bug is fixed; Negative: testing before any code is written",
+        "result_answer": false,
+        "explanation": "Timing depends on process. Positive/negative is about expected behavior given input types."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "In a well-written test case, the expected result should include:",
+    "answers": [
+      {
+        "text": "What exactly should happen (visible behavior, response code/body rules, and system state changes)",
+        "result_answer": true,
+        "explanation": "Correct. Expected results make the test verifiable and unambiguous."
+      },
+      {
+        "text": "A general description like 'system works'",
+        "result_answer": false,
+        "explanation": "That's too vague. A test case must specify observable outcomes to decide pass/fail."
+      },
+      {
+        "text": "Mostly the test input, without explicitly stating expected results",
+        "result_answer": false,
+        "explanation": "Inputs are needed, but without expected results you can't determine correctness."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Severity vs Priority: which choice is the most accurate?",
+    "answers": [
+      {
+        "text": "Severity = impact on the system; Priority = urgency/order to fix based on business context",
+        "result_answer": true,
+        "explanation": "Correct. Severity is 'how bad' (impact). Priority is 'how soon' (fix order)."
+      },
+      {
+        "text": "Severity = how soon you must fix; Priority = how many users are affected",
+        "result_answer": false,
+        "explanation": "Close, but not right. User impact can influence severity, while urgency defines priority."
+      },
+      {
+        "text": "They always match exactly for every defect",
+        "result_answer": false,
+        "explanation": "Not guaranteed. A defect can be severe but low priority (e.g., workaround exists)."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "What is the most important content to include in a bug report to enable fast reproduction?",
+    "answers": [
+      {
+        "text": "Clear steps to reproduce + expected vs actual behavior + environment details",
+        "result_answer": true,
+        "explanation": "Correct. Repro steps and context reduce time spent guessing and speed up triage."
+      },
+      {
+        "text": "Mostly a screenshot of the error without reproducible steps",
+        "result_answer": false,
+        "explanation": "Screenshots help, but without steps and expected/actual, engineers may struggle to reproduce."
+      },
+      {
+        "text": "The tester's personal opinion like 'this is annoying'",
+        "result_answer": false,
+        "explanation": "Subjective comments are less useful than objective reproduction and observed behavior."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "Which order best represents a typical defect lifecycle in many teams?",
+    "answers": [
+      {
+        "text": "New → Triage/Review → Assigned → In Progress → Resolved/Fixed → Verified/Closed",
+        "result_answer": true,
+        "explanation": "Correct. While exact states vary by tool, triage/assignment and later verification/closure are common."
+      },
+      {
+        "text": "Closed → New → In Progress → Assigned → Resolved",
+        "result_answer": false,
+        "explanation": "That's reversed. A defect generally can't move forward without being created and triaged first."
+      },
+      {
+        "text": "In Progress → New → Verified → Assigned → Resolved",
+        "result_answer": false,
+        "explanation": "This mixes states. New defects should exist before they can be worked on."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "When should test cases ideally be designed?",
+    "answers": [
+      {
+        "text": "Based on requirements and acceptance criteria, before execution (so you know what to verify)",
+        "result_answer": true,
+        "explanation": "Correct. Designing tests early helps clarify requirements and reduces rework later."
+      },
+      {
+        "text": "Mostly after developers finish coding, assuming requirements will be stable",
+        "result_answer": false,
+        "explanation": "Requirements can evolve, but you can still start test design early from best available criteria."
+      },
+      {
+        "text": "Mostly after the build is deployed to production, when you can run end-to-end",
+        "result_answer": false,
+        "explanation": "Production is not the right place for initial test design/execution; it increases risk."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "Equivalence partitioning (EP) is mainly used to:",
+    "answers": [
+      {
+        "text": "Reduce test effort by selecting representative values from input/output classes expected to behave similarly",
+        "result_answer": true,
+        "explanation": "Correct. EP divides inputs into groups (partitions) where one test is representative."
+      },
+      {
+        "text": "Force the system to crash to observe error handling at random points",
+        "result_answer": false,
+        "explanation": "That's not the goal of EP. EP is systematic and based on expected similar behavior."
+      },
+      {
+        "text": "Test only the middle values of allowed ranges and ignore boundaries",
+        "result_answer": false,
+        "explanation": "EP alone doesn't say to ignore boundaries. Boundary Value Analysis complements EP."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "Boundary Value Analysis (BVA) is best described as:",
+    "answers": [
+      {
+        "text": "Testing values at the edges of valid/invalid partitions (boundaries) because defects cluster there",
+        "result_answer": true,
+        "explanation": "Correct. Boundaries are where off-by-one and range-check bugs commonly appear."
+      },
+      {
+        "text": "Testing only extreme maximum values and never minimum values",
+        "result_answer": false,
+        "explanation": "You generally test both sides of boundaries, not just maximum."
+      },
+      {
+        "text": "Testing only random values to increase coverage",
+        "result_answer": false,
+        "explanation": "BVA is not random. It's focused on edges derived from requirements/partitions."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "Black-box testing means you:",
+    "answers": [
+      {
+        "text": "Test functionality by providing inputs and observing outputs without relying on internal code structure",
+        "result_answer": true,
+        "explanation": "Correct. Black-box focuses on behavior from the outside."
+      },
+      {
+        "text": "Read the source code and test internal branches exhaustively",
+        "result_answer": false,
+        "explanation": "That's closer to white-box testing; black-box does not require code knowledge."
+      },
+      {
+        "text": "Mostly focus on performance checks with load generators, instead of validating behavior",
+        "result_answer": false,
+        "explanation": "Performance tools are not defining characteristics of black-box vs white-box."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "White-box testing is characterized by:",
+    "answers": [
+      {
+        "text": "Knowledge of internal logic/structure to design tests that cover paths/branches",
+        "result_answer": true,
+        "explanation": "Correct. White-box uses code structure to derive test cases."
+      },
+      {
+        "text": "Testing only the API response status code without checking body",
+        "result_answer": false,
+        "explanation": "That's incomplete verification, but it doesn't define white-box testing."
+      },
+      {
+        "text": "Testing only from a user's perspective without observing outputs",
+        "result_answer": false,
+        "explanation": "Testing still requires observable results; 'without outputs' doesn't make sense."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "A test double is used to:",
+    "answers": [
+      {
+        "text": "Replace parts of the system (like dependencies) during testing to control behavior and isolate tests",
+        "result_answer": true,
+        "explanation": "Correct. Mocks/stubs/fakes help isolate units and make tests deterministic."
+      },
+      {
+        "text": "Create extra production servers for higher uptime",
+        "result_answer": false,
+        "explanation": "That's infrastructure-related and not what test doubles are for."
+      },
+      {
+        "text": "Manually re-run the same test until it passes",
+        "result_answer": false,
+        "explanation": "Re-running can help flaky tests, but test doubles are about controlled replacement in test design."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "What is a test environment?",
+    "answers": [
+      {
+        "text": "A controlled setup that mirrors production-like dependencies to execute tests safely and consistently",
+        "result_answer": true,
+        "explanation": "Correct. Environment includes configuration, services, databases, and settings that tests run against."
+      },
+      {
+        "text": "Any random laptop where someone runs tests",
+        "result_answer": false,
+        "explanation": "That might work for quick checks, but it's not what 'test environment' usually means."
+      },
+      {
+        "text": "The source code repository only",
+        "result_answer": false,
+        "explanation": "Repository is not the environment; environment is what runs the system and dependencies."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "Traceability matrix is mainly used for:",
+    "answers": [
+      {
+        "text": "Mapping requirements to test cases to ensure coverage and easier impact analysis",
+        "result_answer": true,
+        "explanation": "Correct. It helps verify every requirement has corresponding tests."
+      },
+      {
+        "text": "Storing only bug IDs so developers can search issues faster",
+        "result_answer": false,
+        "explanation": "Bug tracking is separate from traceability of requirements to tests."
+      },
+      {
+        "text": "Replacing test cases with a checklist that has no links to requirements",
+        "result_answer": false,
+        "explanation": "A traceability matrix is about linkage; a generic checklist doesn't provide that mapping."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "Risk-based testing means:",
+    "answers": [
+      {
+        "text": "Prioritizing tests based on the likelihood and impact of failures",
+        "result_answer": true,
+        "explanation": "Correct. You spend more effort on what matters most and what is more likely to break."
+      },
+      {
+        "text": "Running tests only on the newest feature because it is most risky",
+        "result_answer": false,
+        "explanation": "New features can be risky, but risk-based testing considers both likelihood and impact across features."
+      },
+      {
+        "text": "Skipping tests whenever time is limited",
+        "result_answer": false,
+        "explanation": "Risk-based testing is the opposite of blind skipping: it intelligently chooses what to test."
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "Exploratory testing is best described as:",
+    "answers": [
+      {
+        "text": "Learning and testing simultaneously by investigating the system with a charter and adapting on the fly",
+        "result_answer": true,
+        "explanation": "Correct. Exploratory testing combines discovery with active test design based on findings."
+      },
+      {
+        "text": "Executing a fixed script step-by-step with no adaptation",
+        "result_answer": false,
+        "explanation": "That's typical of scripted testing. Exploratory testing is adaptive."
+      },
+      {
+        "text": "Mostly automated tests without hands-on exploratory investigation",
+        "result_answer": false,
+        "explanation": "Exploratory testing is often manual, especially early in development."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "Ad-hoc testing means:",
+    "answers": [
+      {
+        "text": "Testing without predefined test cases, typically based on intuition and immediate observations",
+        "result_answer": true,
+        "explanation": "Correct. It's unscripted and can be useful for finding issues quickly."
+      },
+      {
+        "text": "Mostly relying on fully scripted formal test cases with complete documentation",
+        "result_answer": false,
+        "explanation": "Formal scripted testing is the opposite of ad-hoc testing."
+      },
+      {
+        "text": "Running unit tests only through a CI pipeline",
+        "result_answer": false,
+        "explanation": "That's about execution method (CI), not about the presence of predefined test design."
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "In Agile/Scrum, QA typically contributes by:",
+    "answers": [
+      {
+        "text": "Collaborating early, reviewing acceptance criteria, and helping ensure the user story is testable and meets DoD",
+        "result_answer": true,
+        "explanation": "Correct. QA is involved during refinement and implementation, not only at the end."
+      },
+      {
+        "text": "Waiting until the sprint ends to start testing the final build",
+        "result_answer": false,
+        "explanation": "That approach reduces feedback speed. Agile encourages earlier testing collaboration."
+      },
+      {
+        "text": "Writing acceptance criteria only after the feature is already in production",
+        "result_answer": false,
+        "explanation": "Acceptance criteria should be agreed before development/verification."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "Acceptance criteria are best described as:",
+    "answers": [
+      {
+        "text": "Specific conditions that must be satisfied for a user story to be considered complete",
+        "result_answer": true,
+        "explanation": "Correct. They are the 'definition of done' for the story from a user/requirement perspective."
+      },
+      {
+        "text": "A list of test cases written after release to document what happened",
+        "result_answer": false,
+        "explanation": "Acceptance criteria define expected behavior upfront; test cases are derived from them."
+      },
+      {
+        "text": "Mostly a UI mockup with no measurable, verifiable conditions",
+        "result_answer": false,
+        "explanation": "Mockups can help, but acceptance criteria must be verifiable, not just visual."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "What is a good candidate for automation (Junior QA)?",
+    "answers": [
+      {
+        "text": "Tests that must run frequently and check stable behavior with clear expected results",
+        "result_answer": true,
+        "explanation": "Correct. Automation pays off when tests are repeatable, valuable, and not too flaky."
+      },
+      {
+        "text": "A one-time manual exploratory check that is unlikely to repeat",
+        "result_answer": false,
+        "explanation": "Exploratory checks are often valuable but not always good automation targets."
+      },
+      {
+        "text": "Tests that fail randomly due to unstable test data or environment",
+        "result_answer": false,
+        "explanation": "Flaky tests are harder to automate reliably. Fixing stability usually comes first."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "What is a flaky test?",
+    "answers": [
+      {
+        "text": "A test that sometimes fails or passes without a consistent change in the product behavior",
+        "result_answer": true,
+        "explanation": "Correct. Flakiness is nondeterminism: the same test run can produce different results."
+      },
+      {
+        "text": "A test that always fails until developers fix the product",
+        "result_answer": false,
+        "explanation": "Consistent failure indicates a real bug (or incorrect test), not flakiness."
+      },
+      {
+        "text": "A test that is executed only once in production for monitoring",
+        "result_answer": false,
+        "explanation": "That's not the typical definition. Flaky tests are about inconsistent outcomes during automated runs."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "If a test is flaky, which action is most appropriate initially?",
+    "answers": [
+      {
+        "text": "Investigate root cause (test data, timing, environment) and make it deterministic; treat failures carefully",
+        "result_answer": true,
+        "explanation": "Correct. Reruns alone are not a fix. You should identify why behavior is inconsistent."
+      },
+      {
+        "text": "Always ignore the failure because the product probably works",
+        "result_answer": false,
+        "explanation": "Ignoring can hide real regressions. Flakiness still requires investigation."
+      },
+      {
+        "text": "Change the expected result until it matches the current pass behavior",
+        "result_answer": false,
+        "explanation": "Adjusting expected results to 'make it green' hides bugs and reduces test value."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "HTTP 401 vs 403: what is the best distinction?",
+    "answers": [
+      {
+        "text": "401 = unauthenticated/needs valid credentials; 403 = authenticated but not authorized",
+        "result_answer": true,
+        "explanation": "Correct. 401 is about authentication, 403 about authorization/permissions."
+      },
+      {
+        "text": "401 = resource not found; 403 = request blocked by firewall",
+        "result_answer": false,
+        "explanation": "404 is resource not found. 403 can be produced by many permission rules; it's not 'firewall by default.'"
+      },
+      {
+        "text": "401 and 403 always mean the same thing and can be swapped",
+        "result_answer": false,
+        "explanation": "They are different semantics. Clients handle them differently in practice."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "What does HTTP status code 204 (No Content) mean?",
+    "answers": [
+      {
+        "text": "The request succeeded, but the response body is intentionally empty (no payload returned)",
+        "result_answer": true,
+        "explanation": "Correct. 204 indicates success without a response payload."
+      },
+      {
+        "text": "The request is redirected to another endpoint and the client must follow it",
+        "result_answer": false,
+        "explanation": "Redirects are typically 3xx codes (like 301/302). 204 is about successful processing with no body."
+      },
+      {
+        "text": "The resource was created and the body contains the new object",
+        "result_answer": false,
+        "explanation": "Creation responses usually use 201. 204 explicitly means no body is returned."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "CORS is primarily related to:",
+    "answers": [
+      {
+        "text": "Cross-origin browser access control rules for web requests, enforced by the browser",
+        "result_answer": true,
+        "explanation": "Correct. CORS governs whether browsers allow scripts from one origin to access resources on another origin."
+      },
+      {
+        "text": "Database indexing strategy for faster SELECT queries",
+        "result_answer": false,
+        "explanation": "That's database performance/optimization, not browser cross-origin restrictions."
+      },
+      {
+        "text": "Encrypting all traffic regardless of authentication settings",
+        "result_answer": false,
+        "explanation": "Encryption is usually TLS/HTTPS. CORS is about browser permission to read responses."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "In REST, which HTTP method is generally considered idempotent (called multiple times has the same effect)?",
+    "answers": [
+      {
+        "text": "PUT (typically idempotent when used to replace a resource at a stable URI)",
+        "result_answer": true,
+        "explanation": "Correct. PUT is commonly defined as idempotent when used to replace a resource at a stable URI."
+      },
+      {
+        "text": "POST",
+        "result_answer": false,
+        "explanation": "POST is typically not idempotent because repeating it can create multiple resources."
+      },
+      {
+        "text": "PATCH is always idempotent in every API",
+        "result_answer": false,
+        "explanation": "PATCH can be idempotent depending on implementation, but it is not universally guaranteed."
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What should you validate when testing an API response (basic approach)?",
+    "answers": [
+      {
+        "text": "Status code + response schema/body rules + relevant headers (e.g., content-type) according to requirements",
+        "result_answer": true,
+        "explanation": "Correct. Verifying structure/fields and status is essential, not only one of them."
+      },
+      {
+        "text": "Mostly the response time, without validating the response body/schema",
+        "result_answer": false,
+        "explanation": "Performance can matter, but correctness is more than speed. Body/schema must be validated."
+      },
+      {
+        "text": "Mostly the database row count, without validating the API output payload",
+        "result_answer": false,
+        "explanation": "Database checks alone do not confirm what the API returns to the client."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "What is the purpose of an API contract (e.g., OpenAPI/Swagger spec)?",
+    "answers": [
+      {
+        "text": "Define how clients should call the API and what responses/fields to expect (explicit contract expectations)",
+        "result_answer": true,
+        "explanation": "Correct. A contract formalizes endpoints, parameters, schemas, and expected response shapes."
+      },
+      {
+        "text": "Automatically fix backend bugs without code changes",
+        "result_answer": false,
+        "explanation": "Specs document behavior; they do not eliminate defects by themselves."
+      },
+      {
+        "text": "Replace the need for tests because the contract guarantees correct behavior",
+        "result_answer": false,
+        "explanation": "Specs help, but implementations can diverge—testing is still necessary."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "JSON schema validation is used to:",
+    "answers": [
+      {
+        "text": "Confirm that JSON structure and types meet defined rules",
+        "result_answer": true,
+        "explanation": "Correct. JSON schema checks required fields, data types, and constraints."
+      },
+      {
+        "text": "Convert JSON into an HTML table automatically",
+        "result_answer": false,
+        "explanation": "Schema validation is about correctness of data shape, not rendering as HTML."
+      },
+      {
+        "text": "Patch invalid JSON by guessing missing fields",
+        "result_answer": false,
+        "explanation": "Validation reports issues; it doesn't inherently 'fix' by guessing."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "What is the main goal of load testing?",
+    "answers": [
+      {
+        "text": "Measure system behavior under expected (or targeted) user load and identify performance bottlenecks",
+        "result_answer": true,
+        "explanation": "Correct. Load tests evaluate performance at a given concurrency/traffic level."
+      },
+      {
+        "text": "Verify functional correctness only and ignore performance metrics",
+        "result_answer": false,
+        "explanation": "That's functional testing. Load testing is about performance behavior under traffic."
+      },
+      {
+        "text": "Deliberately break the system to see how long it takes to crash",
+        "result_answer": false,
+        "explanation": "Stress testing is more associated with pushing beyond normal limits; load testing focuses on expected load."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "Stress testing differs from load testing because:",
+    "answers": [
+      {
+        "text": "Stress tests push the system beyond normal capacity to observe failure behavior/recovery",
+        "result_answer": true,
+        "explanation": "Correct. Stress testing explores how systems behave when pushed to (or past) their limits."
+      },
+      {
+        "text": "Stress testing is only about UI clicks on dropdowns",
+        "result_answer": false,
+        "explanation": "UI click testing is unrelated; stress testing is about capacity and robustness."
+      },
+      {
+        "text": "Stress testing always guarantees the system will never fail",
+        "result_answer": false,
+        "explanation": "Stress testing measures behavior, not guarantees. Failures can be part of observation."
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "What is accessibility testing mainly concerned with?",
+    "answers": [
+      {
+        "text": "Ensuring the product can be used by people with disabilities (e.g., keyboard navigation, screen readers, contrast)",
+        "result_answer": true,
+        "explanation": "Correct. Accessibility focuses on inclusive usability, commonly aligned with WCAG concepts."
+      },
+      {
+        "text": "Making sure the page loads fastest on a high-end GPU only",
+        "result_answer": false,
+        "explanation": "Performance optimization is different. Accessibility is about effective use regardless of ability."
+      },
+      {
+        "text": "Ensuring only testers can access admin features",
+        "result_answer": false,
+        "explanation": "That's authorization/security. Accessibility is about usability for a broad range of users."
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "Cross-browser testing is required because:",
+    "answers": [
+      {
+        "text": "Different browsers/rendering engines can interpret HTML/CSS/JS differently, causing inconsistent behavior",
+        "result_answer": true,
+        "explanation": "Correct. Browser engines differ, and differences can affect UI and JS behavior."
+      },
+      {
+        "text": "Browsers always run the same JS engine so UI differences are impossible",
+        "result_answer": false,
+        "explanation": "Not true. Browsers have different engines and compatibility nuances."
+      },
+      {
+        "text": "Cross-browser testing only matters for mobile OS authentication flows",
+        "result_answer": false,
+        "explanation": "Mobile auth flows can vary, but cross-browser testing is broader than that."
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "A security vulnerability in testing usually focuses on:",
+    "answers": [
+      {
+        "text": "Potential ways the system can be exploited (e.g., auth bypass, injection, access control weaknesses)",
+        "result_answer": true,
+        "explanation": "Correct. Security testing looks for exploit paths and confirms protections work."
+      },
+      {
+        "text": "Mostly UI alignment/readability checks, rather than security exploitability",
+        "result_answer": false,
+        "explanation": "That's UI validation. Security testing is about exploitability and protection."
+      },
+      {
+        "text": "Checking that the application never uses network calls",
+        "result_answer": false,
+        "explanation": "Network calls are common and not inherently a security issue. The concern is whether they're secured."
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "After a production bug is reported, what is the most appropriate first QA action?",
+    "answers": [
+      {
+        "text": "Triage and reproduce (if possible) to confirm scope, severity, and conditions, then report clearly",
+        "result_answer": true,
+        "explanation": "Correct. First you need to validate the issue, understand impact, and provide actionable reproduction details."
+      },
+      {
+        "text": "Immediately close the ticket because it was reported by users",
+        "result_answer": false,
+        "explanation": "Closing immediately is not appropriate. You must validate impact and reproduction."
+      },
+      {
+        "text": "Rewrite the entire test suite before confirming the bug behavior",
+        "result_answer": false,
+        "explanation": "You should triage/reproduce first; test suite updates follow after you understand the root cause and affected areas."
+      }
+    ]
+  }
+]

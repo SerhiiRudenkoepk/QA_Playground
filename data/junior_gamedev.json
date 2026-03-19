@@ -1,0 +1,948 @@
+[
+  {
+    "id": 1,
+    "question": "In game QA, what is a primary goal of build verification?",
+    "answers": [
+      {
+        "text": "Confirm the build is stable and critical gameplay flows work (crashes, start/load, core loop)",
+        "result_answer": true,
+        "explanation": "Correct. Build verification is about release readiness: stability, launch, and core functionality."
+      },
+      {
+        "text": "Focus only on graphics quality because gameplay bugs can be fixed later",
+        "result_answer": false,
+        "explanation": "Graphics are important, but build verification prioritizes stability and core gameplay correctness."
+      },
+      {
+        "text": "Test only tutorial scenes and ignore other content until patch",
+        "result_answer": false,
+        "explanation": "Tutorial-only coverage misses regressions in other modes/levels."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Which testing activity is most aligned with checking the game loop states?",
+    "answers": [
+      {
+        "text": "Start match -> play -> pause -> resume -> end match -> restart, verifying state consistency",
+        "result_answer": true,
+        "explanation": "Correct. Game loop state transitions often cause persistence and UI/gameplay desync issues."
+      },
+      {
+        "text": "Verify that each button has the correct font color",
+        "result_answer": false,
+        "explanation": "That is UI polish testing. Game loop state consistency is deeper than styling."
+      },
+      {
+        "text": "Run performance profiling once and assume gameplay logic is correct",
+        "result_answer": false,
+        "explanation": "Profiling is non-functional; it does not validate gameplay transitions."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "A good bug report in games should include:",
+    "answers": [
+      {
+        "text": "Clear repro steps plus game context (mode/level, character/loadout, settings), and expected vs actual outcome",
+        "result_answer": true,
+        "explanation": "Correct. Games are context-heavy. Without mode/level and settings, repro becomes guesswork."
+      },
+      {
+        "text": "A single screenshot without specifying what you did",
+        "result_answer": false,
+        "explanation": "Screenshots help, but steps and context are what make it reproducible."
+      },
+      {
+        "text": "Mostly the tester's opinion, without objective differences",
+        "result_answer": false,
+        "explanation": "Subjective opinions are less useful than observable expected vs actual behavior."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "When testing input controls, which is most important?",
+    "answers": [
+      {
+        "text": "Keybind/button mapping correctness across devices and that remapping works without breaking gameplay",
+        "result_answer": true,
+        "explanation": "Correct. Input mapping and remapping are frequent sources of gameplay defects."
+      },
+      {
+        "text": "Mostly verifying that one device (keyboard) works, without covering controller input",
+        "result_answer": false,
+        "explanation": "Players use different devices. Coverage should include the supported input types."
+      },
+      {
+        "text": "Ignoring controller dead zones and sensitivity settings",
+        "result_answer": false,
+        "explanation": "Dead zones and sensitivity affect usability and can create control-feel defects."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What should you verify for pause/resume?",
+    "answers": [
+      {
+        "text": "Gameplay timing, audio state, UI responsiveness, and that actions are not incorrectly applied while paused",
+        "result_answer": true,
+        "explanation": "Correct. Pause issues often cause time/freezing bugs, audio glitches, or input being processed."
+      },
+      {
+        "text": "Mostly that the pause menu opens visually, without checking gameplay pause state",
+        "result_answer": false,
+        "explanation": "The menu visuals alone do not guarantee gameplay state correctness."
+      },
+      {
+        "text": "That the game always resumes to the exact same frame number on every run",
+        "result_answer": false,
+        "explanation": "Exact frame matching is not always required; you verify correctness of state, not deterministic frame count."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Save/load testing should focus on:",
+    "answers": [
+      {
+        "text": "Persistence correctness (progress, inventory, quest state) and compatibility across versions/settings",
+        "result_answer": true,
+        "explanation": "Correct. Save data defects can corrupt progress or break progression."
+      },
+      {
+        "text": "Checking only that the save file exists on disk",
+        "result_answer": false,
+        "explanation": "A save file existing does not mean the contents reload correctly."
+      },
+      {
+        "text": "Testing only empty save slots",
+        "result_answer": false,
+        "explanation": "Most issues happen with real progress and non-default states."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Localization testing in games is more than translation text correctness. Which option best describes a key focus?",
+    "answers": [
+      {
+        "text": "Handling UI layout changes (text length, alignment) and ensuring rules like pluralization/formatting behave correctly",
+        "result_answer": true,
+        "explanation": "Correct. Localization defects include layout overflow and incorrect language rule behavior."
+      },
+      {
+        "text": "Verifying only that English strings are present",
+        "result_answer": false,
+        "explanation": "That misses real issues in translated languages."
+      },
+      {
+        "text": "Accepting visual overflow because it is hard to control in all languages",
+        "result_answer": false,
+        "explanation": "Overflow can break usability; it should be tested and flagged."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Graphics settings testing should include:",
+    "answers": [
+      {
+        "text": "Changing presets and toggles (resolution, quality, effects) and verifying no major glitches, missing textures, or crashes",
+        "result_answer": true,
+        "explanation": "Correct. Graphics settings can cause shader/material bugs and memory/perf issues."
+      },
+      {
+        "text": "Testing only default settings and never changing options",
+        "result_answer": false,
+        "explanation": "Players customize settings; regressions often appear in non-default modes."
+      },
+      {
+        "text": "Assuming high-end GPUs cover all issues",
+        "result_answer": false,
+        "explanation": "Lower GPU/driver combinations can behave differently."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "For animation and character state testing, what is most important?",
+    "answers": [
+      {
+        "text": "State transitions (idle/attack/dodge/death) and checking that animation and gameplay effects stay in sync",
+        "result_answer": true,
+        "explanation": "Correct. Animation timing mismatches can cause gameplay to feel wrong or be incorrect."
+      },
+      {
+        "text": "Checking only the idle animation loop looks smooth at 60 FPS",
+        "result_answer": false,
+        "explanation": "Idle smoothness is not enough. Transition timing and effect sync matter."
+      },
+      {
+        "text": "Ignoring hitboxes/collisions because animations are visual",
+        "result_answer": false,
+        "explanation": "Hitboxes and collisions are gameplay-critical and often tied to animations."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Physics testing primarily aims to validate:",
+    "answers": [
+      {
+        "text": "Collision correctness, interactions (push/pull), and that objects behave consistently with expected rules",
+        "result_answer": true,
+        "explanation": "Correct. Physics bugs are frequent: objects clip, bounce wrong, or collide inconsistently."
+      },
+      {
+        "text": "Mostly visual alignment of collisions, without validating gameplay physics",
+        "result_answer": false,
+        "explanation": "Visual alignment is not enough; the physics response must match expectations."
+      },
+      {
+        "text": "That physics outcomes are perfectly identical across all machines for every run",
+        "result_answer": false,
+        "explanation": "Minor differences can occur due to hardware/timing; you verify acceptable correctness and consistency."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "Audio testing should include at least:",
+    "answers": [
+      {
+        "text": "Volume/mute behavior, audio mixing, and that sound effects/music trigger in the correct gameplay moments",
+        "result_answer": true,
+        "explanation": "Correct. Audio issues include wrong triggers, wrong volume mixing, and persistence after pause/load."
+      },
+      {
+        "text": "Checking only that audio files are included in the build package",
+        "result_answer": false,
+        "explanation": "Files existing does not mean they play correctly or at correct times."
+      },
+      {
+        "text": "Ignoring subtitles because audio covers all comprehension",
+        "result_answer": false,
+        "explanation": "Subtitles/captions are essential for usability and accessibility."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "If a bug is hard to reproduce, what information should you add to your report first?",
+    "answers": [
+      {
+        "text": "Exact context: level/mode, player actions timeline, settings, and any randomness indicators (seed/attempt time if available)",
+        "result_answer": true,
+        "explanation": "Correct. Hard-to-reproduce bugs often depend on context and hidden variables."
+      },
+      {
+        "text": "Mostly approximate steps like 'after playing a while', without exact triggers",
+        "result_answer": false,
+        "explanation": "Approximate steps do not help engineers narrow down the trigger."
+      },
+      {
+        "text": "No context; just attach the crash log",
+        "result_answer": false,
+        "explanation": "Logs help, but context still matters to connect logs to user actions."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "In multiplayer testing, the most critical junior QA focus is:",
+    "answers": [
+      {
+        "text": "Client/server consistency: actions appear correctly for all players under normal latency",
+        "result_answer": true,
+        "explanation": "Correct. Many junior multiplayer defects show up as desync, incorrect state replication, or timing mismatch."
+      },
+      {
+        "text": "Mostly the host player's UI while skipping checks on other clients",
+        "result_answer": false,
+        "explanation": "If only host looks correct, other clients may still desync."
+      },
+      {
+        "text": "Skipping tests when you cannot create the exact same latency",
+        "result_answer": false,
+        "explanation": "You can still test under representative conditions. Perfect latency matching is not always required."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What should you verify for matchmaking or server connection failures?",
+    "answers": [
+      {
+        "text": "Clear error handling, ability to retry, and correct fallback behavior without broken game state",
+        "result_answer": true,
+        "explanation": "Correct. Connection failures must be handled gracefully and must not corrupt state."
+      },
+      {
+        "text": "That the game freezes with no feedback so it is obvious something went wrong",
+        "result_answer": false,
+        "explanation": "Freezing is not acceptable. Users need clear errors and recovery paths."
+      },
+      {
+        "text": "Mostly that the 'retry' button exists, without verifying the retry flow",
+        "result_answer": false,
+        "explanation": "UI existence is insufficient; the retry logic must work."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "Performance testing for games (junior level) mainly checks:",
+    "answers": [
+      {
+        "text": "Stability and key metrics under play: FPS drops, load times, stutters, memory spikes, and potential crashes",
+        "result_answer": true,
+        "explanation": "Correct. Junior performance checks should focus on observable player-facing issues and stability."
+      },
+      {
+        "text": "Mostly average FPS, ignoring spikes and stutters",
+        "result_answer": false,
+        "explanation": "Players feel spikes/stutters more than average FPS. You must watch stutter patterns."
+      },
+      {
+        "text": "Mostly CPU usage peaks; ignoring memory and GPU signals",
+        "result_answer": false,
+        "explanation": "Bottlenecks can be GPU, CPU, or memory/IO. You need broad signals."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "In regression testing for games, what is a practical junior approach to selecting tests?",
+    "answers": [
+      {
+        "text": "Cover changed areas plus likely impacted features (save/load, menus, combat, levels) using risk/impact heuristics",
+        "result_answer": true,
+        "explanation": "Correct. You combine change impact with common failure points to reduce regression scope safely."
+      },
+      {
+        "text": "Mostly re-test the exact feature that changed, skipping related areas",
+        "result_answer": false,
+        "explanation": "Cross-cutting regressions happen (UI, persistence, shared systems)."
+      },
+      {
+        "text": "Do full re-testing of the entire game every day regardless of scope",
+        "result_answer": false,
+        "explanation": "That is expensive and usually unnecessary if you do targeted regression."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "When you test a new level/scene, which set is most important for a junior QA?",
+    "answers": [
+      {
+        "text": "Loading entry -> navigation -> interactions -> triggers/events -> fail states -> exiting/restarting",
+        "result_answer": true,
+        "explanation": "Correct. Levels have many dependencies; testing the full flow finds more issues than single checks."
+      },
+      {
+        "text": "Mostly verifying the level loads without a crash",
+        "result_answer": false,
+        "explanation": "A level loading is necessary, but gameplay logic can still be broken."
+      },
+      {
+        "text": "Mostly checking one walkthrough path, skipping alternative routes",
+        "result_answer": false,
+        "explanation": "Players take different paths. Alternative triggers often hide defects."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What is a common reason for UI bugs in games?",
+    "answers": [
+      {
+        "text": "UI anchoring/layout not matching dynamic content (resolution, localization, different aspect ratios)",
+        "result_answer": true,
+        "explanation": "Correct. Games often render UI in dynamic layouts, so aspect ratio and localization breakpoints matter."
+      },
+      {
+        "text": "UI always uses fixed pixel positions so resolution changes cannot affect it",
+        "result_answer": false,
+        "explanation": "UI layouts frequently scale/anchor; different resolutions can expose issues."
+      },
+      {
+        "text": "UI bugs only come from audio settings",
+        "result_answer": false,
+        "explanation": "That is unrelated. Audio affects sound, not UI layout positioning."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "Which is the best junior approach for checking determinism-like issues (randomness affecting repro)?",
+    "answers": [
+      {
+        "text": "Record the approximate conditions (time, seed if available, player actions) so engineers can replay similar scenarios",
+        "result_answer": true,
+        "explanation": "Correct. You do not always control seeds, but you should capture whatever randomness indicators exist."
+      },
+      {
+        "text": "Ignore randomness because games are expected to be unpredictable",
+        "result_answer": false,
+        "explanation": "Randomness should be tested and controlled enough to reproduce and debug defects."
+      },
+      {
+        "text": "Always claim the issue is due to GPU drivers and stop further investigation",
+        "result_answer": false,
+        "explanation": "Drivers can play a role, but you need gameplay context and evidence."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "For controller testing, what is most important beyond button mapping?",
+    "answers": [
+      {
+        "text": "Analog behavior: dead zones, sensitivity, invert axis options, and that aiming/movement feel correct",
+        "result_answer": true,
+        "explanation": "Correct. Analog tuning directly affects playability and causes subtle defects."
+      },
+      {
+        "text": "Mostly checking that vibration is enabled, without validating full input feel",
+        "result_answer": false,
+        "explanation": "Vibration is one aspect; analog calibration is often the bigger issue."
+      },
+      {
+        "text": "Disabling analog inputs in tests because they are hard to reproduce",
+        "result_answer": false,
+        "explanation": "If analog is supported, you must test it. Hard repro means capturing conditions better."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "What should you verify for quest/progression systems?",
+    "answers": [
+      {
+        "text": "Quest steps complete/advance correctly and persist across save/load and restart",
+        "result_answer": true,
+        "explanation": "Correct. Progression bugs are often persistence or state-machine issues."
+      },
+      {
+        "text": "Mostly that quest text is displayed, without verifying progression logic",
+        "result_answer": false,
+        "explanation": "Text display is not enough. You must check logic and persistence."
+      },
+      {
+        "text": "Mostly that the quest can be started, without checking completion/advancement",
+        "result_answer": false,
+        "explanation": "Completion and advancement are core to progression."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "A crash bug severity is often highest when it:",
+    "answers": [
+      {
+        "text": "Blocks progress (can't continue) or happens during core gameplay frequently",
+        "result_answer": true,
+        "explanation": "Correct. In games, frequency and impact on progress determine severity."
+      },
+      {
+        "text": "Happens only once in a rarely used menu and never during gameplay",
+        "result_answer": false,
+        "explanation": "Rare, non-blocking crashes are usually lower severity than core blocking ones."
+      },
+      {
+        "text": "Mostly affects audio devices, while gameplay state impact is not verified",
+        "result_answer": false,
+        "explanation": "Audio-only issues can still be important, but crash severity is typically different. Crashes imply system instability."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "Which scenario is a strong regression candidate for a junior game QA?",
+    "answers": [
+      {
+        "text": "A newly fixed combat bug where combat is shared across multiple weapons/levels",
+        "result_answer": true,
+        "explanation": "Correct. Shared gameplay systems increase regression surface area."
+      },
+      {
+        "text": "A purely cosmetic typo in a rarely seen UI tip",
+        "result_answer": false,
+        "explanation": "Cosmetic typos are regression candidates depending on severity, but they are less likely to break gameplay."
+      },
+      {
+        "text": "A change to a debug-only cheat menu not used by players",
+        "result_answer": false,
+        "explanation": "Debug-only areas may be lower priority unless they impact release builds."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "When testing respawn mechanics, what should you pay attention to?",
+    "answers": [
+      {
+        "text": "Health/ammo/position reset correctness and that respawn does not duplicate or lose required items",
+        "result_answer": true,
+        "explanation": "Correct. Respawn is state reset logic and can cause duplication/loss bugs."
+      },
+      {
+        "text": "Mostly that the respawn animation plays, without checking state resets",
+        "result_answer": false,
+        "explanation": "Animation only matters visually; correctness is about state values and gameplay behavior."
+      },
+      {
+        "text": "Assuming respawn always restarts from default, ignoring saved equipment changes",
+        "result_answer": false,
+        "explanation": "Respawn behavior may depend on progression/equipment; assumptions can hide defects."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "What is the best way to report a visual glitch that depends on camera angle?",
+    "answers": [
+      {
+        "text": "Record camera angle/position, FOV, and exact steps leading to the glitch; add screenshots from the failing angle",
+        "result_answer": true,
+        "explanation": "Correct. Camera-dependent visuals require spatial context."
+      },
+      {
+        "text": "Report the glitch without any steps because visuals should be obvious",
+        "result_answer": false,
+        "explanation": "Without steps and camera info, it becomes difficult to reproduce and verify."
+      },
+      {
+        "text": "Assume it is a driver issue and stop reporting",
+        "result_answer": false,
+        "explanation": "Driver issues can happen, but you should still capture evidence and report."
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "In mobile game QA, which issue category is commonly missed if you only test on Wi-Fi?",
+    "answers": [
+      {
+        "text": "Network/latency-dependent behavior and offline/poor connectivity flows (timeouts, retries, sync)",
+        "result_answer": true,
+        "explanation": "Correct. Connectivity variations reveal different failure modes."
+      },
+      {
+        "text": "Font rendering because Wi-Fi affects font files directly",
+        "result_answer": false,
+        "explanation": "Wi-Fi does not directly change fonts. Network affects connectivity logic instead."
+      },
+      {
+        "text": "Local save file creation because it depends on Wi-Fi",
+        "result_answer": false,
+        "explanation": "Save files usually depend on local storage, not Wi-Fi. Network still matters for sync steps."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "What should you verify for matchmaking status UI?",
+    "answers": [
+      {
+        "text": "Accurate status updates and that the game can recover (retry/cancel) without leaving the player stuck",
+        "result_answer": true,
+        "explanation": "Correct. Players need responsive and correct matchmaking state handling."
+      },
+      {
+        "text": "Mostly that the loading spinner appears, without verifying scene initialization",
+        "result_answer": false,
+        "explanation": "Spinner presence is not enough; the status must reflect real matchmaking state."
+      },
+      {
+        "text": "Mostly that the game shows a message, even if the content might be wrong",
+        "result_answer": false,
+        "explanation": "Incorrect messages can cause user confusion and wrong retries."
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Why is testing across different aspect ratios important?",
+    "answers": [
+      {
+        "text": "UI and gameplay visibility can change; camera framing and layout can hide or overlap elements",
+        "result_answer": true,
+        "explanation": "Correct. Different aspect ratios change what the player can see and how UI is positioned."
+      },
+      {
+        "text": "Because only aspect ratio changes FPS, not UI or gameplay",
+        "result_answer": false,
+        "explanation": "Aspect ratio affects layout and visibility, not just performance."
+      },
+      {
+        "text": "Because aspect ratio changes only audio levels",
+        "result_answer": false,
+        "explanation": "Audio levels are separate from aspect ratio."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "Which is a good junior strategy for exploring new features without missing obvious cases?",
+    "answers": [
+      {
+        "text": "Use a charter: define a goal, then explore systematically across main flows and failure cases",
+        "result_answer": true,
+        "explanation": "Correct. A charter provides structure so exploratory testing stays focused and covers meaningful paths."
+      },
+      {
+        "text": "Click random UI elements until something breaks",
+        "result_answer": false,
+        "explanation": "That can find issues, but it often produces low-quality repro information and poor coverage."
+      },
+      {
+        "text": "Mostly watch tutorial videos and skip hands-on testing of the feature",
+        "result_answer": false,
+        "explanation": "Exploratory testing requires hands-on validation."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "Audio/subtitle synchronization testing should validate that:",
+    "answers": [
+      {
+        "text": "Subtitles appear at the correct moment and match the spoken/dialogue content for the selected language",
+        "result_answer": true,
+        "explanation": "Correct. Subtitle timing and content accuracy are common localization defects."
+      },
+      {
+        "text": "Subtitles show at any time as long as they are present once per match",
+        "result_answer": false,
+        "explanation": "Timing matters. Users rely on subtitles for comprehension."
+      },
+      {
+        "text": "Subtitles are not needed in games with dialogue because audio is always clear",
+        "result_answer": false,
+        "explanation": "Subtitles support accessibility and comprehension in many scenarios."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "For inventory systems, what is most important to verify?",
+    "answers": [
+      {
+        "text": "Correct add/remove behavior, persistence across save/load, and that equip/use changes stats as expected",
+        "result_answer": true,
+        "explanation": "Correct. Inventory bugs often appear as persistence/state inconsistencies and incorrect stat application."
+      },
+      {
+        "text": "Mostly that items show a thumbnail image, without verifying add/remove/use logic",
+        "result_answer": false,
+        "explanation": "Thumbnail display is not the same as correct inventory logic."
+      },
+      {
+        "text": "Mostly that the inventory screen opens, without verifying behavior when items change",
+        "result_answer": false,
+        "explanation": "Opening is not enough. You must verify behavior when items change and are used."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "What is a common cause of soft-locks in games?",
+    "answers": [
+      {
+        "text": "State machine issues where the player is placed in a state with no valid actions/triggers",
+        "result_answer": true,
+        "explanation": "Correct. Soft-locks are often invalid state transitions or missing triggers."
+      },
+      {
+        "text": "Mostly shader compilation errors, without checking runtime rendering artifacts",
+        "result_answer": false,
+        "explanation": "Shaders can cause visual issues, but soft-locks are usually gameplay state/action issues."
+      },
+      {
+        "text": "Audio volume being set to zero",
+        "result_answer": false,
+        "explanation": "Zero audio does not normally prevent actions/triggers."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "When testing tutorials, what is the most important aspect?",
+    "answers": [
+      {
+        "text": "Tutorial gating: it should guide the player but not block progression once objectives are met",
+        "result_answer": true,
+        "explanation": "Correct. Tutorials can trap players if completion logic fails."
+      },
+      {
+        "text": "That tutorial text is always in the first language",
+        "result_answer": false,
+        "explanation": "Language should follow localization settings."
+      },
+      {
+        "text": "That tutorial objectives are visible, even if they never complete",
+        "result_answer": false,
+        "explanation": "Visibility is not enough; objective completion behavior must be tested."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "What should you verify after changing graphics quality settings in a live session?",
+    "answers": [
+      {
+        "text": "That assets and effects update correctly without corrupting gameplay state (and without crashes/stutters worsening significantly)",
+        "result_answer": true,
+        "explanation": "Correct. Changing settings can trigger resource reload issues and cause instability."
+      },
+      {
+        "text": "Mostly that the settings menu saves values, without validating what actually gets applied",
+        "result_answer": false,
+        "explanation": "You must verify that the changed settings actually apply correctly."
+      },
+      {
+        "text": "Restart the game every time without checking intermediate behavior",
+        "result_answer": false,
+        "explanation": "Some issues happen only during live switching; you should test both modes."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "In a physics-based puzzle game, which bug type is a likely regression candidate?",
+    "answers": [
+      {
+        "text": "Collision/constraint behavior that affects puzzle solution validity",
+        "result_answer": true,
+        "explanation": "Correct. Constraint and collision changes can make puzzles unsolvable or trivial."
+      },
+      {
+        "text": "A font weight change in a menu",
+        "result_answer": false,
+        "explanation": "Font changes are cosmetic and usually lower risk for puzzle correctness."
+      },
+      {
+        "text": "A change in a distant background decoration",
+        "result_answer": false,
+        "explanation": "Background changes are usually less likely to break puzzle logic."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "Why should you test load screens and transitions?",
+    "answers": [
+      {
+        "text": "Transitions can cause black screens, stuck loading, wrong scene activation, or lost state",
+        "result_answer": true,
+        "explanation": "Correct. Scene transitions are a frequent source of blocking gameplay issues."
+      },
+      {
+        "text": "Because loading screens affect only the audio track",
+        "result_answer": false,
+        "explanation": "Loading screens can affect multiple systems: rendering, state, and initialization."
+      },
+      {
+        "text": "Because transitions are only UI and do not involve game logic",
+        "result_answer": false,
+        "explanation": "Transitions often include initialization, data loading, and state changes."
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What is a good junior approach to verifying multiplayer reconnection?",
+    "answers": [
+      {
+        "text": "Test disconnect/reconnect scenarios and ensure players rejoin with correct state (position/inventory), without duplications or resets",
+        "result_answer": true,
+        "explanation": "Correct. Reconnection bugs frequently break state replication and can create duplication."
+      },
+      {
+        "text": "Test only reconnection on the same machine and ignore other clients",
+        "result_answer": false,
+        "explanation": "Other clients may handle reconnection differently; you need broader coverage."
+      },
+      {
+        "text": "Assume reconnection is covered by automated server uptime checks only",
+        "result_answer": false,
+        "explanation": "Server health checks do not verify client state correctness and gameplay flow."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "Which is a practical junior test for localization overflow?",
+    "answers": [
+      {
+        "text": "Test extreme languages (longest strings) with the UI scaling rules and check for truncation/overlap/line wrapping",
+        "result_answer": true,
+        "explanation": "Correct. Extreme languages are where layout problems show up most reliably."
+      },
+      {
+        "text": "Mostly check English and assume other languages behave similarly",
+        "result_answer": false,
+        "explanation": "Different languages have very different string lengths and formatting."
+      },
+      {
+        "text": "Allow overflow in all languages since UI will be fixed later",
+        "result_answer": false,
+        "explanation": "Overflow can block comprehension and is important to catch early."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "A common audio defect in games is the sound playing at the wrong time. Which testing method helps?",
+    "answers": [
+      {
+        "text": "Time-aligned verification: reproduce the event and confirm audio triggers at the expected gameplay moment",
+        "result_answer": true,
+        "explanation": "Correct. Verifying timing reduces 'it sounds wrong' ambiguity."
+      },
+      {
+        "text": "Check only that audio volume slider exists",
+        "result_answer": false,
+        "explanation": "UI presence is not the same as correct audio trigger behavior."
+      },
+      {
+        "text": "Ignore audio because it is difficult to compare between runs",
+        "result_answer": false,
+        "explanation": "You can still validate trigger moments for repeatable events."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "In store/currency testing, what is most important for a junior QA?",
+    "answers": [
+      {
+        "text": "Correct inventory/currency changes and that purchases/rewards apply correctly to the right account and persist",
+        "result_answer": true,
+        "explanation": "Correct. Currency mistakes are critical; verify account association and persistence."
+      },
+      {
+        "text": "Mostly that the purchase button exists, without verifying the transaction",
+        "result_answer": false,
+        "explanation": "Existence is not correctness. The transaction logic must work."
+      },
+      {
+        "text": "Test rewards only offline and never in connected mode",
+        "result_answer": false,
+        "explanation": "Many store flows require connectivity. You need both modes depending on design."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "For performance-related defects, what is the best first evidence to capture (junior level)?",
+    "answers": [
+      {
+        "text": "Repro steps plus observed metrics (FPS, stutters, load time) and basic device/build configuration",
+        "result_answer": true,
+        "explanation": "Correct. Performance issues need context to compare across machines and versions."
+      },
+      {
+        "text": "Mostly a subjective description like 'it feels slow', without measurements or configuration",
+        "result_answer": false,
+        "explanation": "Without numbers and context, diagnosis becomes harder and may be dismissed as subjective."
+      },
+      {
+        "text": "A crash log only; never include performance observations",
+        "result_answer": false,
+        "explanation": "Crashes and performance can be related, but you still need the performance evidence for the main symptom."
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "Which scenario is a strong candidate for exploratory testing in games?",
+    "answers": [
+      {
+        "text": "A new ability or system with multiple interactions where scripted test cases might not cover edge behaviors",
+        "result_answer": true,
+        "explanation": "Correct. Exploratory testing finds unexpected combinations and edge behaviors."
+      },
+      {
+        "text": "A well-defined login form with only one validation rule",
+        "result_answer": false,
+        "explanation": "Scripted checks are usually enough for simple deterministic UI forms."
+      },
+      {
+        "text": "A static menu with no gameplay interaction",
+        "result_answer": false,
+        "explanation": "If there is no interaction, exploratory exploration may be less valuable."
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "What should you verify for shader/post-processing toggles?",
+    "answers": [
+      {
+        "text": "That toggles apply immediately or on expected triggers and do not produce artifacts, flicker, or crashes",
+        "result_answer": true,
+        "explanation": "Correct. Rendering toggles can introduce artifacts and performance regressions."
+      },
+      {
+        "text": "Mostly that the toggle UI changes, without validating the rendering result",
+        "result_answer": false,
+        "explanation": "UI state and visual effect can diverge; you must validate the result."
+      },
+      {
+        "text": "Assume only high-end GPUs matter for shader correctness",
+        "result_answer": false,
+        "explanation": "Shader behavior can vary with hardware and drivers."
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "Localization testing often misses right-to-left (RTL) languages if QA only checks:",
+    "answers": [
+      {
+        "text": "Text direction, alignment, and layout mirroring rules for RTL, not only string translation across the UI",
+        "result_answer": true,
+        "explanation": "Correct. RTL requires layout direction handling and alignment rules."
+      },
+      {
+        "text": "Mostly that strings are translated correctly, without validating formatting and rules",
+        "result_answer": false,
+        "explanation": "Translation alone does not ensure correct directionality and layout."
+      },
+      {
+        "text": "Mostly that RTL does not crash, without validating directionality/layout",
+        "result_answer": false,
+        "explanation": "No crash is not enough. Usability and correct layout are key."
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "Why is it important to test with different save files (not only a fresh start)?",
+    "answers": [
+      {
+        "text": "Many defects depend on progression/history; fresh starts hide persistence and state evolution issues",
+        "result_answer": true,
+        "explanation": "Correct. Player history affects state machines and data-driven features."
+      },
+      {
+        "text": "Because save files only affect cosmetics and cannot affect gameplay",
+        "result_answer": false,
+        "explanation": "Save files often impact progression, inventory, quests, and gameplay behavior."
+      },
+      {
+        "text": "Because save files should never be used in testing for security reasons, only production",
+        "result_answer": false,
+        "explanation": "You can use safe test save files in test environments. It is a key QA strategy."
+      }
+    ]
+  }
+]
+

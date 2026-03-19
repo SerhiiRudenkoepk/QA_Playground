@@ -1,0 +1,948 @@
+[
+  {
+    "id": 1,
+    "question": "For game QA at a middle level, what is a key advantage of using a reproduction-focused approach for defects?",
+    "answers": [
+      {
+        "text": "It improves determinism: engineers can replay the same conditions and reduce time-to-fix",
+        "result_answer": true,
+        "explanation": "Correct. The goal is consistent reproduction using context, seeds/replays when available, and evidence."
+      },
+      {
+        "text": "It is primarily about writing longer bug descriptions, not about reproducibility",
+        "result_answer": false,
+        "explanation": "Documentation helps, but reproduction quality is what drives faster engineering diagnosis."
+      },
+      {
+        "text": "It assumes nondeterministic bugs cannot be investigated",
+        "result_answer": false,
+        "explanation": "Even nondeterministic issues can be investigated with better harnesses and controlled experiments."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "In games, determinism and replayability are important because they help:",
+    "answers": [
+      {
+        "text": "Convert 'it happens sometimes' into a debuggable sequence through recorded inputs/state",
+        "result_answer": true,
+        "explanation": "Correct. Replays make it possible to repeatedly trigger and inspect the issue."
+      },
+      {
+        "text": "Guarantee that performance metrics are always identical across devices",
+        "result_answer": false,
+        "explanation": "Determinism is about behavior; performance can vary due to hardware and settings."
+      },
+      {
+        "text": "Remove the need for assertions because the replay proves the bug",
+        "result_answer": false,
+        "explanation": "You still need to verify expected vs actual gameplay outcomes."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Fixed timestep issues often appear when verifying physics and simulation. What is a practical middle QA focus?",
+    "answers": [
+      {
+        "text": "Test stability across different frame rates and verify that game logic uses appropriate time steps consistently",
+        "result_answer": true,
+        "explanation": "Correct. Incorrect timestep handling can change physics outcomes or gameplay timing."
+      },
+      {
+        "text": "Mostly test at a locked FPS, assuming variable frame rate is unsupported",
+        "result_answer": false,
+        "explanation": "Even if physics uses fixed steps, variable FPS still occurs. You must test across realistic conditions."
+      },
+      {
+        "text": "Assume physics differences between machines are always acceptable and never report them",
+        "result_answer": false,
+        "explanation": "Acceptable tolerance depends on design. Behavior changes that break gameplay should be reported."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "When testing a multiplayer game, which concept is most directly tied to who 'owns' and authoritatively updates state?",
+    "answers": [
+      {
+        "text": "Authority and replication model (server authority, ownership rules, state synchronization)",
+        "result_answer": true,
+        "explanation": "Correct. Multiplayer architecture determines which side computes state and how it is replicated."
+      },
+      {
+        "text": "Font rendering pipeline",
+        "result_answer": false,
+        "explanation": "Font rendering is unrelated to state authority and replication."
+      },
+      {
+        "text": "Local audio mixing settings",
+        "result_answer": false,
+        "explanation": "Audio mixing does not define multiplayer ownership."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What is a strong middle-level approach to regression automation in games?",
+    "answers": [
+      {
+        "text": "Build targeted test harnesses (scripts/bots) that exercise core systems deterministically and compare results to baselines",
+        "result_answer": true,
+        "explanation": "Correct. Harnesses reduce manual work while keeping tests meaningful and reproducible."
+      },
+      {
+        "text": "Record gameplay once and manually watch videos for every run",
+        "result_answer": false,
+        "explanation": "Manual video review is not scalable for automation."
+      },
+      {
+        "text": "Rely only on UI automation tools intended for web apps",
+        "result_answer": false,
+        "explanation": "Games usually need game-aware harnesses (scene loading, bots, simulation checks)."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Which evidence is most valuable for diagnosing a nondeterministic combat bug?",
+    "answers": [
+      {
+        "text": "Repeated occurrences with consistent context plus captured logs/replays/inputs showing timing patterns",
+        "result_answer": true,
+        "explanation": "Correct. Patterns and evidence matter more than a single failure."
+      },
+      {
+        "text": "A single crash screenshot because nondeterminism cannot be investigated",
+        "result_answer": false,
+        "explanation": "Even nondeterministic issues can be studied with multiple attempts and controlled variables."
+      },
+      {
+        "text": "Mostly the version number without gameplay context",
+        "result_answer": false,
+        "explanation": "Version alone is not enough. Context and reproduction attempts are essential."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "In a scene loading regression, what should you verify beyond 'scene loads'?",
+    "answers": [
+      {
+        "text": "Initialization completeness (spawns, triggers, AI states), correct transitions, and absence of persistent state leftovers from previous sessions",
+        "result_answer": true,
+        "explanation": "Correct. Many regressions happen during initialization and state reset."
+      },
+      {
+        "text": "Mostly focus on loading time being shorter than the last patch",
+        "result_answer": false,
+        "explanation": "Loading time is performance. You must still validate logic correctness."
+      },
+      {
+        "text": "Mostly that the loading screen background image is correct",
+        "result_answer": false,
+        "explanation": "That is cosmetic and not sufficient for scene correctness."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Golden master testing in games is best described as:",
+    "answers": [
+      {
+        "text": "Comparing outcomes (screenshots/state outputs) to a known baseline to detect regressions",
+        "result_answer": true,
+        "explanation": "Correct. Golden master compares current output to an expected baseline."
+      },
+      {
+        "text": "Randomly selecting screenshots until one matches",
+        "result_answer": false,
+        "explanation": "That is not systematic. Golden master is a controlled comparison strategy."
+      },
+      {
+        "text": "Mostly checking performance numbers while ignoring visuals/state",
+        "result_answer": false,
+        "explanation": "Golden master can include visuals and state, not only performance."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "For animation-driven gameplay (attacks, hit frames), what is the middle QA priority?",
+    "answers": [
+      {
+        "text": "Validate timing windows and that hitboxes/effects align with animation events across frame rates/settings",
+        "result_answer": true,
+        "explanation": "Correct. Animation events and hit detection are sensitive to timing and step differences."
+      },
+      {
+        "text": "Validate only that animations look smooth at one FPS",
+        "result_answer": false,
+        "explanation": "Visual smoothness does not guarantee gameplay timing correctness."
+      },
+      {
+        "text": "Assume hitboxes are independent of animation and test them separately",
+        "result_answer": false,
+        "explanation": "Many games tie hitboxes to animation events; integration matters."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "Networking latency testing should mainly check that the game:",
+    "answers": [
+      {
+        "text": "Maintains acceptable gameplay consistency under delay/loss (prediction/reconciliation) and does not corrupt state",
+        "result_answer": true,
+        "explanation": "Correct. The key is state consistency and correct reconciliation behavior under adverse conditions."
+      },
+      {
+        "text": "Mostly shows a 'latency' number on UI without verifying gameplay impact",
+        "result_answer": false,
+        "explanation": "Displaying latency is not the same as verifying gameplay correctness under that latency."
+      },
+      {
+        "text": "Always delays all actions until the server confirms them, to avoid inconsistencies",
+        "result_answer": false,
+        "explanation": "That may reduce inconsistencies but could break the intended experience. Testing should validate designed behavior."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "For deterministic bug hunting, which technique is most useful?",
+    "answers": [
+      {
+        "text": "Control variables: set seeds/time overrides where possible, use recorded inputs, and run controlled repeated experiments",
+        "result_answer": true,
+        "explanation": "Correct. Deterministic experiments isolate variables and reveal true cause."
+      },
+      {
+        "text": "Keep changing settings randomly to see what makes it disappear",
+        "result_answer": false,
+        "explanation": "Random changes make root cause harder to isolate."
+      },
+      {
+        "text": "Stop after the first failure because repeat attempts are pointless",
+        "result_answer": false,
+        "explanation": "Repeat attempts are essential for nondeterministic behavior and for verifying fixes."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "In QA test harness design for games, what is a best practice?",
+    "answers": [
+      {
+        "text": "Prefer automated checks against specific expected outcomes (state, event logs, numeric thresholds) over only visual inspection",
+        "result_answer": true,
+        "explanation": "Correct. Outcome-based assertions reduce subjectivity and improve automation signal quality."
+      },
+      {
+        "text": "Use only manual observation because automation cannot validate gameplay",
+        "result_answer": false,
+        "explanation": "Automation can validate many outcomes; you should choose what can be measured."
+      },
+      {
+        "text": "Skip verifying game state and only verify the build does not crash",
+        "result_answer": false,
+        "explanation": "No crash is necessary but not sufficient for gameplay correctness."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Save compatibility across versions is best validated by:",
+    "answers": [
+      {
+        "text": "Loading representative old saves and verifying progression/state migration rules, including new/removed content handling",
+        "result_answer": true,
+        "explanation": "Correct. Compatibility needs validation of migration and expected behaviors for changed systems."
+      },
+      {
+        "text": "Saving and loading only with new empty saves after each patch",
+        "result_answer": false,
+        "explanation": "Empty saves do not cover migration from real player progression."
+      },
+      {
+        "text": "Assuming migration is automatic and skipping checks",
+        "result_answer": false,
+        "explanation": "Skipping checks can miss broken progression, inventory, or quests."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "What should you include in performance budgets for game releases?",
+    "answers": [
+      {
+        "text": "Target thresholds for FPS/frame time, memory usage, and stutter/load times under defined scenarios",
+        "result_answer": true,
+        "explanation": "Correct. Budgets define acceptable performance boundaries under specific test scenarios."
+      },
+      {
+        "text": "Mostly average FPS without defining representative scenarios",
+        "result_answer": false,
+        "explanation": "Average FPS hides spikes and stutters. Scenario definitions are crucial."
+      },
+      {
+        "text": "Mostly GPU time, assuming CPU and memory cannot be bottlenecks",
+        "result_answer": false,
+        "explanation": "Bottlenecks can be CPU, GPU, memory, or IO. You need a broader view."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "In crash triage for games, which process is most effective?",
+    "answers": [
+      {
+        "text": "Collect crash logs/minidumps plus correlation with reproduction (scene/action), then cluster by signature to track patterns",
+        "result_answer": true,
+        "explanation": "Correct. Logs plus context allow developers to identify root cause patterns and prioritize."
+      },
+      {
+        "text": "Ignore crash signatures and only prioritize by how loudly the game sounds before crashing",
+        "result_answer": false,
+        "explanation": "Sound is not a reliable debugging signal."
+      },
+      {
+        "text": "Mostly test on one platform, assuming device differences cover the rest",
+        "result_answer": false,
+        "explanation": "You should still gather signatures across platforms and reproduce where possible."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "When testing AI behavior, what is most important at middle level?",
+    "answers": [
+      {
+        "text": "Behavior correctness against scenarios: verify objectives, obstacle interactions, and that AI states recover safely after interruptions",
+        "result_answer": true,
+        "explanation": "Correct. AI bugs often involve state recovery, pathing edge cases, and objective progression."
+      },
+      {
+        "text": "Mostly verify that AI animations play",
+        "result_answer": false,
+        "explanation": "Animations are visual; you must validate behavior and state logic."
+      },
+      {
+        "text": "Assuming AI is too random to test and only reviewing logs after release",
+        "result_answer": false,
+        "explanation": "AI can be tested with designed scenarios and repeatable conditions."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "For particle systems testing, what is a strong middle focus?",
+    "answers": [
+      {
+        "text": "Check for artifacts and performance cost under worst-case scenarios (dense particles, long sessions) and verify correct lifecycle cleanup",
+        "result_answer": true,
+        "explanation": "Correct. Particles can cause memory/perf spikes and visual glitches; lifecycle cleanup matters."
+      },
+      {
+        "text": "Mostly verify particle texture quality in one frame",
+        "result_answer": false,
+        "explanation": "Quality in one frame does not guarantee correct behavior, lifecycle, or performance."
+      },
+      {
+        "text": "Mostly avoid testing on lower-end devices, assuming particles always look correct",
+        "result_answer": false,
+        "explanation": "Lower-end devices expose performance and rendering artifacts."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "Which approach best helps prevent false positives in automated screenshot comparisons?",
+    "answers": [
+      {
+        "text": "Use stable scenes/settings, control randomness, and ignore regions that legitimately vary while comparing meaningful output areas",
+        "result_answer": true,
+        "explanation": "Correct. Stabilizing inputs and choosing comparison regions reduces flaky visual diffs."
+      },
+      {
+        "text": "Always compare the entire screen with no tolerance because any pixel difference is a defect",
+        "result_answer": false,
+        "explanation": "Some differences are expected (timestamps, dynamic overlays). Use controlled comparisons."
+      },
+      {
+        "text": "Skip checking changes to avoid dealing with false positives",
+        "result_answer": false,
+        "explanation": "Skipping defeats the purpose of screenshot-based regression."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "In multiplayer, what is a key risk when testing reconnection or session resume?",
+    "answers": [
+      {
+        "text": "State duplication or inconsistent authority that leads to mismatched inventory/position between clients",
+        "result_answer": true,
+        "explanation": "Correct. Reconnections often break state synchronization and ownership."
+      },
+      {
+        "text": "Mostly audio mixing resets, while gameplay state is not verified",
+        "result_answer": false,
+        "explanation": "Reconnection affects gameplay state, not just audio."
+      },
+      {
+        "text": "Because reconnection is client-only, server state cannot be affected",
+        "result_answer": false,
+        "explanation": "Server authority usually still matters; server state is frequently involved."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "What is a good middle QA practice for verifying cross-platform parity?",
+    "answers": [
+      {
+        "text": "Define parity levels (critical gameplay, core progression, UI usability) and test representative scenarios per platform under realistic constraints",
+        "result_answer": true,
+        "explanation": "Correct. Full identical behavior might not be feasible, so you define what must match and verify those scenarios."
+      },
+      {
+        "text": "Require exact identical performance and physics outcomes in every scenario",
+        "result_answer": false,
+        "explanation": "Exact parity can be unrealistic due to hardware differences. Focus on designed parity requirements."
+      },
+      {
+        "text": "Test only PC builds because consoles and mobile share the same runtime",
+        "result_answer": false,
+        "explanation": "Different platforms have different constraints and can expose unique bugs."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "When testing UI in games, what is a typical middle-level addition to junior UI tests?",
+    "answers": [
+      {
+        "text": "Verify interactive behavior and focus/selection logic under different input methods, not only layout",
+        "result_answer": true,
+        "explanation": "Correct. Game UI often includes navigation logic, not just rendering."
+      },
+      {
+        "text": "Mostly check colors and spacing, treating input navigation as secondary",
+        "result_answer": false,
+        "explanation": "Input navigation is part of UI correctness."
+      },
+      {
+        "text": "Assume controller navigation works automatically once keyboard layout is correct",
+        "result_answer": false,
+        "explanation": "Navigation maps differ between input methods and must be tested."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "Which statement best describes how to test offline/online transitions in online games?",
+    "answers": [
+      {
+        "text": "Test reconnect flows and ensure data sync does not corrupt local progress or create duplicates after coming back online",
+        "result_answer": true,
+        "explanation": "Correct. Sync and reconciliation are frequent sources of duplication and data corruption."
+      },
+      {
+        "text": "Mostly test fully offline and skip reconnection validation",
+        "result_answer": false,
+        "explanation": "The critical risk often happens when reconnecting and syncing."
+      },
+      {
+        "text": "Assume offline progress is always independent from online systems",
+        "result_answer": false,
+        "explanation": "Progress frequently needs synchronization once online again."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "In QA automation for games, what is the main reason to design tests to run in isolation?",
+    "answers": [
+      {
+        "text": "Avoid hidden dependencies (leftover state, saved sessions) that make results order-dependent",
+        "result_answer": true,
+        "explanation": "Correct. Isolation prevents cascading failures and improves reproducibility."
+      },
+      {
+        "text": "Because isolation makes tests slower and therefore incorrect",
+        "result_answer": false,
+        "explanation": "Isolation improves correctness and stability even if setup time increases."
+      },
+      {
+        "text": "Because isolation is required only for web apps, not games",
+        "result_answer": false,
+        "explanation": "The same principle applies: state can leak between test runs."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "When testing economy/store systems, what is the most important middle-level validation?",
+    "answers": [
+      {
+        "text": "Correct entitlement and anti-duplication: ensure purchases apply once, to the correct account, and refunds/rollbacks behave safely",
+        "result_answer": true,
+        "explanation": "Correct. Economy issues have high impact; you must verify idempotency and correct entitlement mapping."
+      },
+      {
+        "text": "Mostly that the UI shows the correct price",
+        "result_answer": false,
+        "explanation": "UI price is not enough. The backend transaction logic matters."
+      },
+      {
+        "text": "Ignore offline purchase cases because they cannot occur",
+        "result_answer": false,
+        "explanation": "Offline/poor connectivity scenarios often exist and can break store flows."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "Which metric is most useful for judging whether a performance regression is real (not noise)?",
+    "answers": [
+      {
+        "text": "Compare measurements across multiple runs with controlled scenarios and analyze tail latency/frame time distribution",
+        "result_answer": true,
+        "explanation": "Correct. Repeated controlled runs and distribution insights reduce noise and confirm regressions."
+      },
+      {
+        "text": "Compare only one run and rely on your subjective 'feels worse' judgment",
+        "result_answer": false,
+        "explanation": "One run is noise-prone and subjective feedback is not reliable evidence."
+      },
+      {
+        "text": "Use only average FPS and ignore stutters",
+        "result_answer": false,
+        "explanation": "Regression might manifest as stutter spikes rather than average FPS."
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "AI pathfinding testing should include checking:",
+    "answers": [
+      {
+        "text": "Edge cases: blocked paths, unreachable goals, and recovery after obstacles appear/disappear",
+        "result_answer": true,
+        "explanation": "Correct. Pathfinding defects often show up as stuck states or incorrect recovery."
+      },
+      {
+        "text": "Mostly that AI reaches the goal on the first attempt",
+        "result_answer": false,
+        "explanation": "First attempt success doesn't cover edge conditions and recovery behavior."
+      },
+      {
+        "text": "Mostly that AI idle animations play while waiting",
+        "result_answer": false,
+        "explanation": "Animation is not the pathfinding correctness."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "In scene transitions, what is a hidden risk besides loading time?",
+    "answers": [
+      {
+        "text": "Persistent objects/components not being cleaned up, causing duplicate spawns or event triggers",
+        "result_answer": true,
+        "explanation": "Correct. Cleanup/registration issues often cause subtle duplicate events and wrong state."
+      },
+      {
+        "text": "Mostly that textures get blurry, without checking for logic issues",
+        "result_answer": false,
+        "explanation": "Scene transitions can break logic and state, not only textures."
+      },
+      {
+        "text": "Mostly that music volume changes",
+        "result_answer": false,
+        "explanation": "Audio issues can occur, but duplicate state and logic issues are common too."
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Golden master comparisons can be too sensitive. Which middle approach helps?",
+    "answers": [
+      {
+        "text": "Define tolerances and normalize/ignore known dynamic elements (time, overlays) while keeping stable comparisons",
+        "result_answer": true,
+        "explanation": "Correct. Controlled normalization reduces noise while still catching real regressions."
+      },
+      {
+        "text": "Disable comparisons entirely once there are any false positives",
+        "result_answer": false,
+        "explanation": "Disabling removes detection value. Fix comparison strategy instead."
+      },
+      {
+        "text": "Always approve any diff because baselines can be wrong",
+        "result_answer": false,
+        "explanation": "Approving all diffs makes the test useless. Use controlled tolerance and triage."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "What is the best way to test input latency feel (middle QA)?",
+    "answers": [
+      {
+        "text": "Test under different frame times and network conditions (if relevant) and compare expected response timing against defined acceptance criteria",
+        "result_answer": true,
+        "explanation": "Correct. Feel depends on timing conditions. You need scenario-based acceptance checks."
+      },
+      {
+        "text": "Mostly measure the UI button click event, without validating end-to-end gameplay response",
+        "result_answer": false,
+        "explanation": "UI events do not guarantee gameplay reaction timing or end-to-end latency."
+      },
+      {
+        "text": "Mostly test on one monitor and skip retesting",
+        "result_answer": false,
+        "explanation": "Input feel varies with devices and performance conditions; it needs coverage."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "How should you test accessibility features in games?",
+    "answers": [
+      {
+        "text": "Validate functionality and usability: key remapping, subtitle/closed captions, readable contrast, and that accessibility toggles apply correctly",
+        "result_answer": true,
+        "explanation": "Correct. Accessibility is functional usability, not just visual contrast."
+      },
+      {
+        "text": "Mostly confirm subtitles exist, without validating remapping/testing",
+        "result_answer": false,
+        "explanation": "Accessibility includes controls, semantics, and proper interaction behavior."
+      },
+      {
+        "text": "Disable accessibility testing to avoid conflicting design feedback",
+        "result_answer": false,
+        "explanation": "Accessibility is part of quality. It should be tested and validated."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "For localization QA in games, which addition is important at middle level?",
+    "answers": [
+      {
+        "text": "Validate formatting and culture-specific rules (dates, numbers, plural forms) and ensure text direction/mirroring works across UI screens",
+        "result_answer": true,
+        "explanation": "Correct. Culture-specific formatting and RTL/LTR layout handling are common sources of bugs."
+      },
+      {
+        "text": "Check only that strings are translated; ignore formatting rules",
+        "result_answer": false,
+        "explanation": "Formatting correctness is part of localization quality."
+      },
+      {
+        "text": "Avoid testing some languages because they are rare",
+        "result_answer": false,
+        "explanation": "Rare languages can still break layout or rules. Choose representative risk cases."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "When triaging a gameplay bug, what is a middle-level improvement over basic reporting?",
+    "answers": [
+      {
+        "text": "Add quantitative observations (timing, counts) and identify affected systems/components to speed engineering focus",
+        "result_answer": true,
+        "explanation": "Correct. Evidence and impact scope reduce investigation time."
+      },
+      {
+        "text": "Mostly describe what you feel is wrong, without connecting it to systems",
+        "result_answer": false,
+        "explanation": "Feel is not enough. Connecting to the system helps engineers find the right code."
+      },
+      {
+        "text": "Submit a bug without any expected behavior because 'expected' is subjective",
+        "result_answer": false,
+        "explanation": "Expected behavior must be specified or derived from requirements/design."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "For combat systems with RNG, what is a practical middle QA technique?",
+    "answers": [
+      {
+        "text": "Use controlled seeds or record RNG state if possible; otherwise capture enough context to compare outcomes",
+        "result_answer": true,
+        "explanation": "Correct. RNG issues are harder; you need repeatable triggers or strong evidence for comparisons."
+      },
+      {
+        "text": "Assume RNG prevents reproducibility and never attempt fixes verification",
+        "result_answer": false,
+        "explanation": "You can still verify with statistical evidence or controlled conditions."
+      },
+      {
+        "text": "Change acceptance criteria to match the random result you saw last",
+        "result_answer": false,
+        "explanation": "Acceptance criteria should be based on design expectations, not observed randomness."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "In automated tests for games, what helps reduce test flakiness caused by timing?",
+    "answers": [
+      {
+        "text": "Wait for explicit game events/state transitions and assert after expected states, rather than using fixed delays",
+        "result_answer": true,
+        "explanation": "Correct. Event-based waiting reduces race conditions across different performance conditions."
+      },
+      {
+        "text": "Use fixed sleeps everywhere to simplify and speed up tests",
+        "result_answer": false,
+        "explanation": "Fixed sleeps are brittle and cause flakiness when timing differs."
+      },
+      {
+        "text": "Do not assert outcomes because timing differences make assertions unreliable",
+        "result_answer": false,
+        "explanation": "Assertions are needed. You need correct synchronization to make them reliable."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "What is an effective way to verify that a fix does not introduce unintended side effects in adjacent systems?",
+    "answers": [
+      {
+        "text": "Run targeted regression across dependent systems with risk-based selection and verify state persistence (save/load, transitions)",
+        "result_answer": true,
+        "explanation": "Correct. Fixes can affect shared systems; dependent regression and persistence checks reduce risk."
+      },
+      {
+        "text": "Mostly test the exact UI change location, skipping gameplay/system dependencies",
+        "result_answer": false,
+        "explanation": "Shared logic can regress beyond the touched UI area."
+      },
+      {
+        "text": "Stop testing once the primary scenario works once",
+        "result_answer": false,
+        "explanation": "Single success does not confirm absence of side effects. State persistence and adjacent scenarios matter."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "Which statement best describes how to test offline progression and later sync in an online game?",
+    "answers": [
+      {
+        "text": "Complete progression offline, then reconnect and verify correct synchronization without duplicating rewards or corrupting state",
+        "result_answer": true,
+        "explanation": "Correct. The sync boundary is where duplicates and corruption commonly happen."
+      },
+      {
+        "text": "Mostly test synchronization when the account is new",
+        "result_answer": false,
+        "explanation": "New accounts may not reproduce progression history issues."
+      },
+      {
+        "text": "Assume offline progression cannot affect online systems",
+        "result_answer": false,
+        "explanation": "Offline progression is usually reconciled later; it can break state mapping."
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "In cross-platform testing, why is it useful to define scenario-based acceptance criteria?",
+    "answers": [
+      {
+        "text": "Because 'same behavior' can differ by platform constraints; acceptance clarifies what must match to ship",
+        "result_answer": true,
+        "explanation": "Correct. Acceptance criteria help prioritize parity requirements under real constraints."
+      },
+      {
+        "text": "Because acceptance criteria remove the need for testing different platforms",
+        "result_answer": false,
+        "explanation": "Acceptance clarifies testing goals, but you still must test per platform."
+      },
+      {
+        "text": "Because acceptance criteria are only for performance metrics, not gameplay",
+        "result_answer": false,
+        "explanation": "Acceptance criteria can cover functional gameplay, UI, performance, and more."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "What is a good middle-level definition of 'high severity' for game defects?",
+    "answers": [
+      {
+        "text": "Blocks progress or causes widespread player-impact (crashes, broken core mechanics, save corruption), especially when frequent",
+        "result_answer": true,
+        "explanation": "Correct. Severity depends on blocking impact and frequency in core flows."
+      },
+      {
+        "text": "Mostly affects one cosmetic element, without verifying gameplay impact",
+        "result_answer": false,
+        "explanation": "Cosmetic issues are typically lower severity unless they break gameplay comprehension."
+      },
+      {
+        "text": "Appears only in developer tools and cannot exist in builds",
+        "result_answer": false,
+        "explanation": "If it cannot exist in release builds, severity is usually lower."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "How should you test patch updates that change content definitions?",
+    "answers": [
+      {
+        "text": "Validate upgrade paths: load old saves/content, apply changes, and verify that progression and assets map correctly",
+        "result_answer": true,
+        "explanation": "Correct. Upgrades are risk. You must ensure migration and correct mapping to new content."
+      },
+      {
+        "text": "Mostly test fresh installs and ignore upgrade/migration paths",
+        "result_answer": false,
+        "explanation": "Fresh installs do not cover migration of existing player data."
+      },
+      {
+        "text": "Mostly check that the patch downloads successfully",
+        "result_answer": false,
+        "explanation": "Download success does not verify content integration or save migration correctness."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "When testing camera and rendering issues, which middle tactic is most useful?",
+    "answers": [
+      {
+        "text": "Capture reproducible camera states (position/FOV), use consistent test scenes, and compare results across settings/hardware",
+        "result_answer": true,
+        "explanation": "Correct. Camera-dependent bugs require spatial evidence and controlled comparisons."
+      },
+      {
+        "text": "Record only a generic description and assume engineers can guess the camera angle",
+        "result_answer": false,
+        "explanation": "Camera info is essential for repro. Guesswork slows fixes."
+      },
+      {
+        "text": "Skip testing at different FOV because it is only visual",
+        "result_answer": false,
+        "explanation": "FOV can affect culling and gameplay visibility, not only visuals."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "What is a reliable way to verify UI focus/selection navigation for gamepad?",
+    "answers": [
+      {
+        "text": "Test deterministic navigation paths and confirm focus moves correctly through all controls, including modals and error screens",
+        "result_answer": true,
+        "explanation": "Correct. Focus navigation defects appear in modals and edge screens; deterministic navigation helps validate behavior."
+      },
+      {
+        "text": "Mostly test the main menu and skip in-game UI",
+        "result_answer": false,
+        "explanation": "In-game UI can differ and contain unique focus logic."
+      },
+      {
+        "text": "Assume focus works if mouse selection works",
+        "result_answer": false,
+        "explanation": "Mouse and controller navigation can be implemented differently."
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "If screenshot-based automation reports diffs, what is the best middle QA triage approach?",
+    "answers": [
+      {
+        "text": "Classify diffs: expected changes (new content, animations), dynamic regions, and real regressions; then validate with state checks or manual confirm",
+        "result_answer": true,
+        "explanation": "Correct. Diffs can be expected. Triaging requires context and follow-up verification."
+      },
+      {
+        "text": "Automatically treat every diff as a critical defect without validation",
+        "result_answer": false,
+        "explanation": "That creates noise and overwhelms triage."
+      },
+      {
+        "text": "Ignore diffs until production because screenshot tests only run in development",
+        "result_answer": false,
+        "explanation": "Ignoring diffs removes the early detection advantage."
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "In store/currency, why is idempotency important?",
+    "answers": [
+      {
+        "text": "It prevents duplicated grants if a request is repeated due to retries/timeouts",
+        "result_answer": true,
+        "explanation": "Correct. Client/server retries can repeat purchase flows; idempotency ensures each purchase maps to a single grant."
+      },
+      {
+        "text": "It only matters for UI display and not for backend grants",
+        "result_answer": false,
+        "explanation": "Idempotency concerns backend side effects and entitlement logic."
+      },
+      {
+        "text": "Idempotency is irrelevant because purchases never repeat",
+        "result_answer": false,
+        "explanation": "In real systems, retries and network issues can repeat requests."
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "For long-running sessions, what should you validate as a middle QA?",
+    "answers": [
+      {
+        "text": "Stability over time: memory growth, resource cleanup, progression correctness after many loops, and absence of gradual performance degradation",
+        "result_answer": true,
+        "explanation": "Correct. Long sessions expose leaks, cleanup issues, and performance drift."
+      },
+      {
+        "text": "Mostly that the game does not crash within 5 minutes",
+        "result_answer": false,
+        "explanation": "Crashes within 5 minutes are not the only risk. Many issues appear after longer time."
+      },
+      {
+        "text": "Mostly that menus look correct after hours of play",
+        "result_answer": false,
+        "explanation": "Menus are part of UI, but long-session stability is about systems, memory, and progression."
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "Which testing practice most improves communication between QA and engineers in gamedev?",
+    "answers": [
+      {
+        "text": "Provide structured evidence (replay/inputs/logs), identify affected systems, and propose hypotheses backed by observations",
+        "result_answer": true,
+        "explanation": "Correct. Structured evidence and grounded hypotheses speed investigation and reduce back-and-forth."
+      },
+      {
+        "text": "Mostly attach screenshots without stating expected outcomes",
+        "result_answer": false,
+        "explanation": "Without expected outcomes and hypotheses, engineers spend more time interpreting and guessing."
+      },
+      {
+        "text": "Avoid discussing reproduction because it can bias the investigation",
+        "result_answer": false,
+        "explanation": "Reproduction details are useful and do not eliminate independent investigation."
+      }
+    ]
+  }
+]
+

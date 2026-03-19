@@ -1,0 +1,948 @@
+[
+  {
+    "id": 1,
+    "question": "In defect management, what is the best distinction between severity and priority?",
+    "answers": [
+      {
+        "text": "Severity is impact on functionality; priority is urgency/order to fix based on context",
+        "result_answer": true,
+        "explanation": "Correct. Severity describes how badly a defect affects the system. Priority is how soon it must be addressed."
+      },
+      {
+        "text": "Severity is how many users are affected; priority is how complex the fix is",
+        "result_answer": false,
+        "explanation": "Close, but not correct. User impact can influence severity, and complexity can influence priority, yet neither is a strict definition."
+      },
+      {
+        "text": "Severity and priority always have the same value for every defect",
+        "result_answer": false,
+        "explanation": "Not guaranteed. A defect can be severe but low priority (workaround exists), or urgent but lower severity."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "question": "Exit criteria in testing are primarily used to:",
+    "answers": [
+      {
+        "text": "Define when testing is considered sufficient and a release decision can be made",
+        "result_answer": true,
+        "explanation": "Correct. Exit criteria turn testing progress into an explicit go/no-go decision basis."
+      },
+      {
+        "text": "Replace requirement reviews with only test execution status",
+        "result_answer": false,
+        "explanation": "Exit criteria are not a substitute for requirement quality or design review."
+      },
+      {
+        "text": "Guarantee that every defect has been found before release",
+        "result_answer": false,
+        "explanation": "No exit criteria can guarantee 100% defect-free release. They define sufficiency based on risk."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "question": "Which statement best describes the test pyramid?",
+    "answers": [
+      {
+        "text": "More tests at lower levels (unit), fewer at higher levels (UI), to keep the suite fast and valuable",
+        "result_answer": true,
+        "explanation": "Correct. The pyramid encourages a balance where fast feedback comes from lower-level tests."
+      },
+      {
+        "text": "All tests should be UI tests because they validate what users see",
+        "result_answer": false,
+        "explanation": "UI tests are useful but typically slower and more brittle, so using only UI tests reduces feedback speed."
+      },
+      {
+        "text": "The pyramid is only relevant when you have 100% code coverage",
+        "result_answer": false,
+        "explanation": "The pyramid is a strategy for managing cost and feedback, not a direct requirement of code coverage."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "question": "Contract testing is most directly aimed at preventing:",
+    "answers": [
+      {
+        "text": "Breaking changes between services by validating expected request/response contracts",
+        "result_answer": true,
+        "explanation": "Correct. Contracts define the interface expectations, so tests can catch mismatches early."
+      },
+      {
+        "text": "Front-end visual regressions only",
+        "result_answer": false,
+        "explanation": "Visual regressions belong to UI testing. Contract testing is about interface behavior."
+      },
+      {
+        "text": "All production issues that originate outside the API boundary",
+        "result_answer": false,
+        "explanation": "Contract tests cover interface behavior, not every possible integration or product issue."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "question": "What is the most appropriate first step when a test becomes flaky (intermittent failures)?",
+    "answers": [
+      {
+        "text": "Determine the root cause (data, timing, environment, shared state) and make outcomes deterministic",
+        "result_answer": true,
+        "explanation": "Correct. Flakiness needs investigation; reruns alone do not fix the underlying nondeterminism."
+      },
+      {
+        "text": "Automatically re-run failing tests until they pass in CI",
+        "result_answer": false,
+        "explanation": "This can hide real regressions and worsen trust in the suite."
+      },
+      {
+        "text": "Change the expected result to match the most recent passing run",
+        "result_answer": false,
+        "explanation": "That reduces test value by conforming tests to bugs."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "question": "Risk-based test selection means you primarily:",
+    "answers": [
+      {
+        "text": "Choose what to test based on likelihood of failure and impact if it fails",
+        "result_answer": true,
+        "explanation": "Correct. Risk combines probability and impact to focus effort."
+      },
+      {
+        "text": "Test only the newest features because they are always the riskiest",
+        "result_answer": false,
+        "explanation": "Newest features can be risky, but risk-based selection also considers criticality of affected components."
+      },
+      {
+        "text": "Run the same full regression suite every time regardless of risk",
+        "result_answer": false,
+        "explanation": "That is the opposite of risk-based prioritization."
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "question": "Good test data management for repeatable automation typically requires:",
+    "answers": [
+      {
+        "text": "Controlled, deterministic data setup and cleanup to avoid cross-test contamination",
+        "result_answer": true,
+        "explanation": "Correct. Isolation and consistent data state reduce nondeterministic failures."
+      },
+      {
+        "text": "Using the real production database as a test dataset to be realistic",
+        "result_answer": false,
+        "explanation": "Using prod data is unsafe and usually not deterministic. Use controlled environments and datasets."
+      },
+      {
+        "text": "Mostly keeping test data unchanged so tests always hit identical values",
+        "result_answer": false,
+        "explanation": "Some stability is good, but you also need versioning and cleanup. Identical forever can also cause hidden coupling."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "question": "Integration testing is primarily concerned with validating:",
+    "answers": [
+      {
+        "text": "Interactions between components/services (interfaces, data flow, and integration behavior)",
+        "result_answer": true,
+        "explanation": "Correct. Unit tests isolate logic; integration tests verify the boundaries work together."
+      },
+      {
+        "text": "Primarily the internal implementation details of one function",
+        "result_answer": false,
+        "explanation": "That is closer to unit testing or component-level testing."
+      },
+      {
+        "text": "Primarily UI styling and layout concerns",
+        "result_answer": false,
+        "explanation": "UI layout is UI testing. Integration testing is about component interaction."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "question": "Which UI automation approach is least reliable over time?",
+    "answers": [
+      {
+        "text": "Selecting elements by deeply nested CSS paths that change with layout",
+        "result_answer": true,
+        "explanation": "Correct. Brittle locators increase maintenance and lead to false failures when UI structure changes."
+      },
+      {
+        "text": "Using stable attributes (like data-testid) when available",
+        "result_answer": false,
+        "explanation": "Stable selectors are usually more maintainable and reduce false negatives."
+      },
+      {
+        "text": "Encapsulating page behavior in reusable helper methods",
+        "result_answer": false,
+        "explanation": "Encapsulation improves maintainability by centralizing interaction logic."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "question": "What is the primary purpose of the Page Object Model (POM) in UI automation?",
+    "answers": [
+      {
+        "text": "Reduce duplication by separating page structure/locators from test logic",
+        "result_answer": true,
+        "explanation": "Correct. POM improves maintainability when UI changes by centralizing selectors and interactions."
+      },
+      {
+        "text": "Make tests execute faster by eliminating all waits",
+        "result_answer": false,
+        "explanation": "POM is about design/maintainability, not necessarily performance."
+      },
+      {
+        "text": "Replace the need for assertions by checking only UI state changes",
+        "result_answer": false,
+        "explanation": "You still need assertions; POM does not remove the verification requirement."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "question": "When deciding between mocking and using a real dependency, the key consideration is:",
+    "answers": [
+      {
+        "text": "Whether you need interface-level verification (real dependency) or controlled isolation for a specific unit scope (mock)",
+        "result_answer": true,
+        "explanation": "Correct. Mocks isolate behavior; real dependencies verify integration. Choose based on what the test is trying to prove."
+      },
+      {
+        "text": "Always mock because real dependencies slow down tests",
+        "result_answer": false,
+        "explanation": "Not always. Too much mocking can miss integration bugs."
+      },
+      {
+        "text": "Always use real dependencies because mocks never work correctly",
+        "result_answer": false,
+        "explanation": "Mocks can be useful when correctly specified and maintained."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "question": "What is the best way to validate an API response for correctness?",
+    "answers": [
+      {
+        "text": "Validate status code, schema/structure, and business rules relevant to the scenario",
+        "result_answer": true,
+        "explanation": "Correct. Correctness includes both format and semantics, not just a status code."
+      },
+      {
+        "text": "Validate only the response time because correctness is a backend concern",
+        "result_answer": false,
+        "explanation": "Performance is non-functional. Functional correctness must be checked too."
+      },
+      {
+        "text": "Validate only the presence of one field and ignore other fields",
+        "result_answer": false,
+        "explanation": "A partial check may miss schema/business rule violations."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "question": "Negative testing for authentication should primarily verify that the system:",
+    "answers": [
+      {
+        "text": "Rejects invalid credentials/tokens and returns safe, consistent error behavior (no sensitive leakage)",
+        "result_answer": true,
+        "explanation": "Correct. For negative auth tests, you check correct rejection plus safe error handling."
+      },
+      {
+        "text": "Always returns HTTP 500 for any invalid token so it is obvious something broke",
+        "result_answer": false,
+        "explanation": "500 indicates server error. Invalid credentials should be mapped to the correct client-side error semantics."
+      },
+      {
+        "text": "Accepts invalid tokens but later fails when the user performs an action",
+        "result_answer": false,
+        "explanation": "That is not secure or correct behavior. Invalid tokens should be rejected at the boundary."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "question": "Which statement about retries is most accurate in test design?",
+    "answers": [
+      {
+        "text": "Retries should usually target transient failures, and tests must still assert final correctness, not just success after retries",
+        "result_answer": true,
+        "explanation": "Correct. Retrying should not convert failures into unverified passes."
+      },
+      {
+        "text": "Retries guarantee that tests will be deterministic because the second attempt will always see the same state",
+        "result_answer": false,
+        "explanation": "Retries can reduce timing issues but do not guarantee determinism if underlying causes exist."
+      },
+      {
+        "text": "Retries can be used for any failure type, including validation errors",
+        "result_answer": false,
+        "explanation": "Validation/auth/business errors are not typically transient; retrying can waste time and hide real problems."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "question": "For API testing, what is the most appropriate purpose of an idempotency check?",
+    "answers": [
+      {
+        "text": "Confirm that repeated requests do not cause duplicated side effects (when the API promises idempotency)",
+        "result_answer": true,
+        "explanation": "Correct. Idempotency testing verifies safe repetition behavior for the operation."
+      },
+      {
+        "text": "Confirm that any request can be repeated safely regardless of HTTP method or endpoint",
+        "result_answer": false,
+        "explanation": "Idempotency is specific to endpoint/operation semantics. Not every API action is idempotent."
+      },
+      {
+        "text": "Confirm only that the response code is the same for every repetition",
+        "result_answer": false,
+        "explanation": "Same status code is not enough. The side effects and resulting state must be checked."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "question": "Correlation IDs are useful in testing mainly because they:",
+    "answers": [
+      {
+        "text": "Help trace a single request across logs/services to improve diagnosis",
+        "result_answer": true,
+        "explanation": "Correct. Correlation IDs connect client actions to backend processing for debugging."
+      },
+      {
+        "text": "Eliminate the need for assertions because logs prove behavior",
+        "result_answer": false,
+        "explanation": "Logs help diagnose, but tests still need explicit assertions on expected behavior."
+      },
+      {
+        "text": "Ensure that all services are using the same database schema",
+        "result_answer": false,
+        "explanation": "Correlation IDs are about tracing, not schema compatibility."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "question": "Which statement about code coverage is most accurate?",
+    "answers": [
+      {
+        "text": "High code coverage can indicate executed code, but it does not guarantee absence of defects or full requirement coverage",
+        "result_answer": true,
+        "explanation": "Correct. Coverage is a signal, not proof. You still need meaningful assertions and requirement mapping."
+      },
+      {
+        "text": "Code coverage directly equals test effectiveness because every line executed must be correct",
+        "result_answer": false,
+        "explanation": "A line can execute with wrong results and still count as covered."
+      },
+      {
+        "text": "Low code coverage always means tests are useless",
+        "result_answer": false,
+        "explanation": "Some defects exist outside covered paths, but low coverage does not automatically mean useless tests."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "question": "What is a common limitation of relying only on branch coverage?",
+    "answers": [
+      {
+        "text": "You can cover branches but still miss incorrect business behavior across combined conditions",
+        "result_answer": true,
+        "explanation": "Correct. Branch coverage focuses on control flow, not full semantic correctness."
+      },
+      {
+        "text": "Branch coverage always requires writing UI tests instead of unit tests",
+        "result_answer": false,
+        "explanation": "Branch coverage is typically measured in unit/component tests, not UI only."
+      },
+      {
+        "text": "Branch coverage cannot be measured for server-side code",
+        "result_answer": false,
+        "explanation": "Branch coverage can be measured for many languages and environments."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "question": "Decision table testing is best when you need to:",
+    "answers": [
+      {
+        "text": "Cover combinations of input conditions that map to different rules/outcomes",
+        "result_answer": true,
+        "explanation": "Correct. Decision tables model condition combinations and expected results clearly."
+      },
+      {
+        "text": "Randomly test inputs until all possible paths are executed",
+        "result_answer": false,
+        "explanation": "That is not systematic. Decision tables provide structured coverage."
+      },
+      {
+        "text": "Primarily UI state verification, without validating rule logic",
+        "result_answer": false,
+        "explanation": "Decision tables are for logic/rules, not UI layout only."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "question": "Pairwise testing helps primarily to:",
+    "answers": [
+      {
+        "text": "Reduce combinatorial explosion by ensuring every pair of parameter values is tested at least once",
+        "result_answer": true,
+        "explanation": "Correct. Pairwise is a practical compromise for large input combinations."
+      },
+      {
+        "text": "Guarantee that every combination of all parameters is tested",
+        "result_answer": false,
+        "explanation": "That is usually infeasible. Pairwise does not cover all combinations."
+      },
+      {
+        "text": "Test only the most common values and ignore edge cases",
+        "result_answer": false,
+        "explanation": "Pairwise can include edge cases; it depends on chosen partitions/values."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "question": "State transition testing is intended to verify that the system:",
+    "answers": [
+      {
+        "text": "Behaves correctly when moving between states based on events (including illegal transitions)",
+        "result_answer": true,
+        "explanation": "Correct. It focuses on stateful behavior and event-driven transitions."
+      },
+      {
+        "text": "Primarily checks that each state looks correct",
+        "result_answer": false,
+        "explanation": "UI checks can be part of it, but the core is correctness of transitions and state rules."
+      },
+      {
+        "text": "Avoiding invalid transition validation to prevent failing tests",
+        "result_answer": false,
+        "explanation": "Invalid transitions should usually be tested to ensure safe handling."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "question": "How should you handle environment differences when reproducing a production issue?",
+    "answers": [
+      {
+        "text": "Compare configuration, dependencies, data, and time-sensitive behavior; then align the test environment as closely as possible",
+        "result_answer": true,
+        "explanation": "Correct. Environment alignment is essential because many production bugs are configuration/data related."
+      },
+      {
+        "text": "Assume staging differs and skip trying to reproduce",
+        "result_answer": false,
+        "explanation": "Reproduction attempts still matter. You can learn and isolate the cause even if exact repro is hard."
+      },
+      {
+        "text": "Reproduce only on your local machine and ignore CI/staging details",
+        "result_answer": false,
+        "explanation": "Local differences can mislead. Production issues often need the right context."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "question": "In CI/CD, which stage is typically responsible for fast feedback from automated checks?",
+    "answers": [
+      {
+        "text": "Earlier stages like unit/component tests and quick smoke tests before deployment",
+        "result_answer": true,
+        "explanation": "Correct. Fast checks run early to fail quickly and reduce wasted deployment effort."
+      },
+      {
+        "text": "Mostly after production deployment, assuming it is the final reality",
+        "result_answer": false,
+        "explanation": "Waiting for production increases risk and reduces feedback speed."
+      },
+      {
+        "text": "Mostly manual testing only on a tester's laptop",
+        "result_answer": false,
+        "explanation": "Manual checks can be useful, but CI/CD relies on automation for speed and consistency."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "question": "Which approach best improves root cause analysis for intermittent backend issues?",
+    "answers": [
+      {
+        "text": "Use logs/metrics/traces with correlation IDs and create a deterministic reproduction attempt (or a controlled experiment) when possible",
+        "result_answer": true,
+        "explanation": "Correct. You need evidence and controlled steps; intermittent issues require careful data and isolation."
+      },
+      {
+        "text": "Mostly report a suspected cause based on symptoms, without strong evidence",
+        "result_answer": false,
+        "explanation": "Without evidence, reports are less actionable and lead to slow investigation."
+      },
+      {
+        "text": "Delete the failing test because it is intermittent",
+        "result_answer": false,
+        "explanation": "Removing tests loses detection capability. Fix the flakiness or isolate the intermittent cause."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "question": "Load testing vs stress testing: which statement is most accurate?",
+    "answers": [
+      {
+        "text": "Load testing evaluates behavior under expected/target traffic; stress testing pushes beyond to observe failure and recovery",
+        "result_answer": true,
+        "explanation": "Correct. Load focuses on expected conditions, stress explores limits."
+      },
+      {
+        "text": "Stress testing is only about UI clicks; load testing is only about database indexing",
+        "result_answer": false,
+        "explanation": "Those are unrelated. Both are about system performance behavior under traffic."
+      },
+      {
+        "text": "They are the same because both aim to find failures",
+        "result_answer": false,
+        "explanation": "They differ in objective and traffic level relative to normal capacity."
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "question": "In performance reporting, percentiles like p95/p99 are used mainly to:",
+    "answers": [
+      {
+        "text": "Represent response-time distribution and highlight tail latency better than averages",
+        "result_answer": true,
+        "explanation": "Correct. Averages hide outliers; percentiles show experience for most users and tail behavior."
+      },
+      {
+        "text": "Guarantee that the system never exceeds a fixed time limit",
+        "result_answer": false,
+        "explanation": "Percentiles describe observed distribution, not a guarantee."
+      },
+      {
+        "text": "Replace the need for functional assertions in load tests",
+        "result_answer": false,
+        "explanation": "Performance tests must still validate correctness of outputs at load."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "question": "Memory leak detection in automated/system testing most often requires:",
+    "answers": [
+      {
+        "text": "Longer-duration runs with memory profiling/heap snapshots to observe growth over time",
+        "result_answer": true,
+        "explanation": "Correct. Leaks show up as trending memory growth, not just instantaneous usage."
+      },
+      {
+        "text": "Mostly focus on FPS and ignore memory/IO signals",
+        "result_answer": false,
+        "explanation": "FPS checks are performance metrics. Memory leaks require profiling evidence."
+      },
+      {
+        "text": "Stopping the test immediately after the first spike and calling it a leak",
+        "result_answer": false,
+        "explanation": "Spikes can be GC, caching, or load effects. Leaks require trend analysis."
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "question": "Which statement best reflects OWASP Top 10 testing thinking?",
+    "answers": [
+      {
+        "text": "Focus on common risk categories (e.g., injection, auth issues, XSS) and validate protections, not just scan for strings",
+        "result_answer": true,
+        "explanation": "Correct. Security testing verifies exploitability and mitigation behavior."
+      },
+      {
+        "text": "Mostly verify that password fields are masked visually",
+        "result_answer": false,
+        "explanation": "UI masking does not address many security risks like injection or access control."
+      },
+      {
+        "text": "Avoid negative inputs because they might cause server errors",
+        "result_answer": false,
+        "explanation": "Negative testing is part of security testing; you still need safe handling and proper boundaries."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "question": "SQL injection prevention is primarily validated by confirming that the system:",
+    "answers": [
+      {
+        "text": "Uses parameterized queries/ORM safely so user input is treated as data, not code",
+        "result_answer": true,
+        "explanation": "Correct. Injection prevention relies on how inputs are handled by the data access layer."
+      },
+      {
+        "text": "Always returns the same error message on SQL errors",
+        "result_answer": false,
+        "explanation": "Consistent errors can be good for security, but injection prevention is about safe query construction."
+      },
+      {
+        "text": "Blocks requests when input contains special characters only",
+        "result_answer": false,
+        "explanation": "Filtering is not sufficient alone; correct parameterization is the key."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "question": "XSS vs CSRF: which statement is most accurate?",
+    "answers": [
+      {
+        "text": "XSS injects/executes malicious scripts in the context of a victim page; CSRF tricks an authenticated user to perform unwanted actions",
+        "result_answer": true,
+        "explanation": "Correct. They are different threat models: script execution vs request forgery."
+      },
+      {
+        "text": "They are the same because both require an admin cookie",
+        "result_answer": false,
+        "explanation": "Not the same. Different mechanisms and mitigations apply."
+      },
+      {
+        "text": "CSRF is only a UI bug and cannot be exploited in real requests",
+        "result_answer": false,
+        "explanation": "CSRF is about authenticated requests; it is not limited to UI."
+      }
+    ]
+  },
+  {
+    "id": 31,
+    "question": "Accessibility testing for an interactive web app mainly verifies that users can:",
+    "answers": [
+      {
+        "text": "Navigate and understand the interface using assistive technologies (keyboard, screen readers, sufficient focus/semantics)",
+        "result_answer": true,
+        "explanation": "Correct. Accessibility is about effective use, not just color contrast."
+      },
+      {
+        "text": "Primarily rely on mouse interaction and visuals",
+        "result_answer": false,
+        "explanation": "That fails accessibility goals because many users cannot rely on mouse/visual interpretation."
+      },
+      {
+        "text": "Ignore focus order as long as labels exist",
+        "result_answer": false,
+        "explanation": "Keyboard focus order and semantics are essential for assistive use."
+      }
+    ]
+  },
+  {
+    "id": 32,
+    "question": "Localization testing for a Junior web app is mostly about string presence. For a Middle QA, you should focus more on:",
+    "answers": [
+      {
+        "text": "Functional correctness of localization rules (pluralization, formatting), layout impacts, and encoding across languages/regions",
+        "result_answer": true,
+        "explanation": "Correct. Beyond strings, you must validate rule-driven language behavior and formatting correctness."
+      },
+      {
+        "text": "Mostly check English rendering and assume others behave similarly",
+        "result_answer": false,
+        "explanation": "That does not validate localization behavior for other languages."
+      },
+      {
+        "text": "Disabling translations temporarily to avoid failing tests",
+        "result_answer": false,
+        "explanation": "Skipping localization defeats the purpose and may hide issues."
+      }
+    ]
+  },
+  {
+    "id": 33,
+    "question": "What does observability-based debugging primarily require?",
+    "answers": [
+      {
+        "text": "Relevant logs/metrics/traces that allow mapping a test action to system behavior and state",
+        "result_answer": true,
+        "explanation": "Correct. Observability reduces time-to-diagnose by providing evidence tied to the request/operation."
+      },
+      {
+        "text": "Primarily screenshots without enough context for reproducibility",
+        "result_answer": false,
+        "explanation": "Screenshots help, but observability is about system-level signals."
+      },
+      {
+        "text": "Turning off all server logs to improve performance",
+        "result_answer": false,
+        "explanation": "Less logging usually makes debugging harder, not easier."
+      }
+    ]
+  },
+  {
+    "id": 34,
+    "question": "In test design, what is a traceability matrix mainly used for?",
+    "answers": [
+      {
+        "text": "Linking requirements to test cases to ensure intended coverage and facilitate impact analysis",
+        "result_answer": true,
+        "explanation": "Correct. It helps confirm that requirements are tested and supports change impact planning."
+      },
+      {
+        "text": "Tracking only bug IDs with no connection to requirements",
+        "result_answer": false,
+        "explanation": "Bug tracking systems are separate from requirement-to-test linkage."
+      },
+      {
+        "text": "Replacing test cases with requirement summaries",
+        "result_answer": false,
+        "explanation": "A summary does not execute. You still need test cases derived from requirements."
+      }
+    ]
+  },
+  {
+    "id": 35,
+    "question": "A test case should be written so that it is:",
+    "answers": [
+      {
+        "text": "Unambiguous: another tester can decide pass/fail from inputs and observed outcomes",
+        "result_answer": true,
+        "explanation": "Correct. Clear preconditions, steps, and expected results ensure repeatability and consistent decisions."
+      },
+      {
+        "text": "Vague but short so it can fit any scenario",
+        "result_answer": false,
+        "explanation": "Vagueness breaks repeatability and makes outcomes subjective."
+      },
+      {
+        "text": "Focused only on the data entry part with no expected result",
+        "result_answer": false,
+        "explanation": "Without expected results, pass/fail cannot be determined."
+      }
+    ]
+  },
+  {
+    "id": 36,
+    "question": "Which combination is a better regression approach than re-running everything?",
+    "answers": [
+      {
+        "text": "Select tests based on risk/impact and dependencies (affected areas) plus a smaller stable baseline suite",
+        "result_answer": true,
+        "explanation": "Correct. Targeted regression reduces cost while still protecting critical behavior."
+      },
+      {
+        "text": "Re-run only tests that failed historically, ignoring all new changes",
+        "result_answer": false,
+        "explanation": "Historical failures can guide, but ignoring new changes misses new defect risks."
+      },
+      {
+        "text": "Run no regression because CI will detect issues anyway",
+        "result_answer": false,
+        "explanation": "CI might not cover all flows. Regression protection is still needed."
+      }
+    ]
+  },
+  {
+    "id": 37,
+    "question": "What is a key reason flaky UI tests become expensive in a test strategy?",
+    "answers": [
+      {
+        "text": "They create false failures, increase maintenance, and reduce team trust in test results",
+        "result_answer": true,
+        "explanation": "Correct. Flakiness erodes confidence and forces more time spent triaging test failures instead of product issues."
+      },
+      {
+        "text": "They always run slower but do not affect decisions",
+        "result_answer": false,
+        "explanation": "Speed matters, but the bigger problem is decision quality and trust."
+      },
+      {
+        "text": "They guarantee that new UI bugs are never missed",
+        "result_answer": false,
+        "explanation": "Flaky tests can miss real issues because failures are inconsistent."
+      }
+    ]
+  },
+  {
+    "id": 38,
+    "question": "In API testing, how do you validate security-related headers effectively?",
+    "answers": [
+      {
+        "text": "Check presence and values based on the requirements (e.g., content security policy, cache-control, auth-related behaviors) and ensure they match the endpoint context",
+        "result_answer": true,
+        "explanation": "Correct. Security header checks must be based on expected policies, not just presence."
+      },
+      {
+        "text": "Mostly check header presence but not whether values match expectations",
+        "result_answer": false,
+        "explanation": "Headers with wrong values may be ineffective."
+      },
+      {
+        "text": "Ignore headers in tests because security is handled by the gateway only",
+        "result_answer": false,
+        "explanation": "Some security behavior is application-specific; verify what the service promises."
+      }
+    ]
+  },
+  {
+    "id": 39,
+    "question": "A good risk statement for testing scope should include:",
+    "answers": [
+      {
+        "text": "What could go wrong, how likely it is, and what the impact would be if it fails for the product/scope being tested",
+        "result_answer": true,
+        "explanation": "Correct. Risk is probability and impact tied to a specific potential failure."
+      },
+      {
+        "text": "Mostly that it is important to stakeholders, without defining specific failure risks",
+        "result_answer": false,
+        "explanation": "Stakeholder importance helps, but risk needs a concrete failure possibility and impact."
+      },
+      {
+        "text": "A list of test cases with no risk reasoning",
+        "result_answer": false,
+        "explanation": "Test cases are derived from risk, not a replacement for risk thinking."
+      }
+    ]
+  },
+  {
+    "id": 40,
+    "question": "Which statement best describes how to verify a release candidate (RC) for a typical web service?",
+    "answers": [
+      {
+        "text": "Run a defined set of smoke tests plus targeted regression based on changes, and confirm key non-functional baselines where relevant",
+        "result_answer": true,
+        "explanation": "Correct. RC checks focus on critical paths and change impact, not full exhaustive testing every time."
+      },
+      {
+        "text": "Run the full regression suite for hours, even for tiny changes",
+        "result_answer": false,
+        "explanation": "That is often inefficient. RC checks should be risk-based and time-bounded."
+      },
+      {
+        "text": "Skip functional checks and rely only on monitoring after deploy",
+        "result_answer": false,
+        "explanation": "Monitoring helps, but functional validation before deploy is still important."
+      }
+    ]
+  },
+  {
+    "id": 41,
+    "question": "How can you reduce false negatives in automated tests that use async operations?",
+    "answers": [
+      {
+        "text": "Use deterministic waits/conditions (not arbitrary sleeps) and assert after the expected state is reached",
+        "result_answer": true,
+        "explanation": "Correct. Waiting for the condition reduces race conditions and makes results more stable."
+      },
+      {
+        "text": "Replace all waits with fixed delays like 1 second to simplify tests",
+        "result_answer": false,
+        "explanation": "Fixed delays are brittle across environments and load conditions."
+      },
+      {
+        "text": "Avoid assertions because timing makes them unreliable",
+        "result_answer": false,
+        "explanation": "You must assert correctness; correct waiting is what makes assertions reliable."
+      }
+    ]
+  },
+  {
+    "id": 42,
+    "question": "What is the best way to test feature flags during releases?",
+    "answers": [
+      {
+        "text": "Verify both flag states and combinations with permissions/roles, ensuring consistent behavior and safe defaults",
+        "result_answer": true,
+        "explanation": "Correct. Feature flags affect behavior; you must test both enable/disable and how it interacts with access control."
+      },
+      {
+        "text": "Test only the enabled state because disabled state is unreachable",
+        "result_answer": false,
+        "explanation": "Disabled state is reachable in many environments and can break logic or defaults."
+      },
+      {
+        "text": "Test flags only in production to avoid configuration drift",
+        "result_answer": false,
+        "explanation": "Testing in production increases risk. Use consistent configuration in test/staging."
+      }
+    ]
+  },
+  {
+    "id": 43,
+    "question": "When a non-deterministic concurrency bug is suspected, what is the best QA practice?",
+    "answers": [
+      {
+        "text": "Collect evidence from multiple controlled runs and compare traces/logs to identify patterns, then build a reproducible test harness",
+        "result_answer": true,
+        "explanation": "Correct. Concurrency bugs often require pattern analysis and better harnesses than single attempts."
+      },
+      {
+        "text": "Run once and close as 'cannot reproduce'",
+        "result_answer": false,
+        "explanation": "One run is often insufficient for nondeterministic issues."
+      },
+      {
+        "text": "Assume it is always a server performance issue and stop investigating logic",
+        "result_answer": false,
+        "explanation": "Performance can contribute, but concurrency bugs need logic-level investigation too."
+      }
+    ]
+  },
+  {
+    "id": 44,
+    "question": "Idempotent test design means:",
+    "answers": [
+      {
+        "text": "Running the same test multiple times does not accumulate state changes that affect later results",
+        "result_answer": true,
+        "explanation": "Correct. Idempotent tests reset/clean state so reruns remain valid."
+      },
+      {
+        "text": "If a test fails once, do not rerun it because it will always fail",
+        "result_answer": false,
+        "explanation": "Failure might be transient. You should rerun after investigation or with proper stabilization logic."
+      },
+      {
+        "text": "Use only manual tests because automation cannot be idempotent",
+        "result_answer": false,
+        "explanation": "Automation can be idempotent with correct setup/cleanup and controlled data."
+      }
+    ]
+  },
+  {
+    "id": 45,
+    "question": "Which statement about test effectiveness is most accurate?",
+    "answers": [
+      {
+        "text": "Effectiveness is about how well tests detect real defects relative to cost and risk, not just about passing tests",
+        "result_answer": true,
+        "explanation": "Correct. You evaluate detection value and coverage quality, not only whether a suite is green."
+      },
+      {
+        "text": "Effectiveness equals the number of test cases; more tests always mean better quality",
+        "result_answer": false,
+        "explanation": "More tests can help, but if they are redundant/brittle they can reduce effectiveness."
+      },
+      {
+        "text": "Effectiveness is measured only by automation percentage",
+        "result_answer": false,
+        "explanation": "Automation is a means, not the end. You still need correct coverage and meaningful assertions."
+      }
+    ]
+  }
+]
+
